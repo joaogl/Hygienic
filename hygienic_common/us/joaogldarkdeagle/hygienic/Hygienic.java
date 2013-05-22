@@ -3,6 +3,7 @@ package us.joaogldarkdeagle.hygienic;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
@@ -49,7 +50,7 @@ public class Hygienic {
         mopBukket = new BlockMopBukket(900, Material.grass, mopBukket_Tex).setUnlocalizedName("mopBukket_UN");
         mopBukket.setStepSound(Block.soundMetalFootstep);
         
-        mop = (new ItemMop(901, mop_Tex)).setUnlocalizedName("Mop").setCreativeTab(hygienicTab);
+        mop = (new ItemMop(901, EnumToolMaterial.IRON, mop_Tex)).setUnlocalizedName("Mop").setCreativeTab(hygienicTab);
         food = (new ItemModFood(902, 18, true, modFood_Tex)).setUnlocalizedName("My Food");
         apple = (new ItemModApple(903, 18, false, modFood_Tex)).setUnlocalizedName("My Apple").setPotionEffect("potion.blindness");
         glassBow = (new GlassBow(904, modBow_Tex)).setUnlocalizedName("Glass Bow");

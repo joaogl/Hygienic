@@ -1,5 +1,6 @@
 package us.joaogldarkdeagle.hygienic;
 
+import java.awt.Event;
 import java.util.Random;
 
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;

@@ -5,7 +5,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
@@ -15,7 +14,7 @@ public class BlockMopBukket extends Block {
     public BlockMopBukket(int id, Material material, String texture) {
         super(id, material);
         this.texture = texture;
-        setCreativeTab(CreativeTabs.tabTools);
+        setCreativeTab(Hygienic.hygienicTab);
         this.slipperiness = 4.0F;
     }
 

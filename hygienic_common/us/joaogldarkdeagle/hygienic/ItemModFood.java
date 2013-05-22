@@ -10,6 +10,7 @@ public class ItemModFood extends ItemFood {
     public ItemModFood(int par1, int par2, boolean par3, String texture) {
         super(par1, par2, par3);
         this.texture = texture;
+        setCreativeTab(Hygienic.hygienicTab);
     }
 
     public int getMaxItemUseDuration(ItemStack par1ItemStack) {

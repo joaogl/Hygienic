@@ -7,6 +7,7 @@ public class ItemModApple extends ItemModFood {
 
     public ItemModApple(int par1, int par2, boolean par3, String texture) {
         super(par1, par2, par3, texture);
+        setCreativeTab(Hygienic.hygienicTab);
     }
 
     public EnumRarity getRarity(ItemStack par1ItemStack) {

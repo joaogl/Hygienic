@@ -27,7 +27,7 @@ public class GlassBow extends Item {
         super(par1);
         this.maxStackSize = 1;
         this.setMaxDamage(384);
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        setCreativeTab(Hygienic.hygienicTab);
         this.texture = texture;
     }
     

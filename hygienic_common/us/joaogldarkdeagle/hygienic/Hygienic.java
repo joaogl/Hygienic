@@ -29,7 +29,7 @@ public class Hygienic {
     public static Item mop;
     public static Item food;
     public static Item apple;
-    public static Item glassBow;
+    //public static Item glassBow;
     static String mopBukket_Tex = "Hygienic:Blocks";
     static String mop_Tex = "Hygienic:Items";
     static String modFood_Tex = "Hygienic:Food";
@@ -57,14 +57,14 @@ public class Hygienic {
         LanguageRegistry.addName(mop, "Mop");   
         LanguageRegistry.addName(food, "My Food");   
         LanguageRegistry.addName(apple, "My Apple");  
-        LanguageRegistry.addName(glassBow, "Glass Bow");   
+        //LanguageRegistry.addName(glassBow, "Glass Bow");   
 
         GameRegistry.addRecipe(new ItemStack(mopBukket, 1), new Object[] {"   "," X ","X X", Character.valueOf('X'), Item.ingotIron});
         GameRegistry.addRecipe(new ItemStack(mop, 4), new Object[] {"XXX","XXX","XXX", Character.valueOf('X'), mopBukket});
         GameRegistry.addRecipe(new ItemStack(food, 4), new Object[] {"   "," X "," X ", Character.valueOf('X'), Item.ingotIron});
         GameRegistry.addRecipe(new ItemStack(apple, 4), new Object[] {" X "," X "," X ", Character.valueOf('X'), Item.ingotIron});
 
-        GameRegistry.addRecipe(new ItemStack(glassBow, 1), new Object[] {" XS","X S"," XS", Character.valueOf('X'), Block.glass, Character.valueOf('S'), Item.silk});
+        //GameRegistry.addRecipe(new ItemStack(glassBow, 1), new Object[] {" XS","X S"," XS", Character.valueOf('X'), Block.glass, Character.valueOf('S'), Item.silk});
     }
 
     @PostInit

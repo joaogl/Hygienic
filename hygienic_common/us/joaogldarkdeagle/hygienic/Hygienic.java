@@ -27,11 +27,13 @@ public class Hygienic {
 
     public static CreativeTabs hygienicTab = new HygienicTab("Hygienic");
     public static Block mopBukket;
+    public static Block pollutedBlock;
     public static Item mop;
     public static Item food;
     public static Item apple;
     public static Item glassBow;
     static String mopBukket_Tex = "Hygienic:Blocks";
+    static String polluted_Tex = "Hygienic:Pollu";
     static String mop_Tex = "Hygienic:Items";
     static String modFood_Tex = "Hygienic:Food";
     static String modApple_Tex = "Hygienic:Apple";
@@ -51,17 +53,22 @@ public class Hygienic {
         food = (new ItemModFood(902, 18, true, modFood_Tex)).setUnlocalizedName("My Food");
         apple = (new ItemModApple(903, 18, false, modFood_Tex)).setUnlocalizedName("My Apple").setPotionEffect("potion.blindness");
         glassBow = (new GlassBow(904, modBow_Tex)).setUnlocalizedName("Glass Bow");
-        
+
+        pollutedBlock = new BlockPolluted(905, Material.snow, polluted_Tex).setUnlocalizedName("polluted_UN");
+
         GameRegistry.registerBlock(mopBukket, "mopBukket_UN");
-        
+        GameRegistry.registerBlock(pollutedBlock, "polluted_UN");
+
         LanguageRegistry.addName(mopBukket, "Mop Bukket");
+        LanguageRegistry.addName(pollutedBlock, "Polucion");
         LanguageRegistry.addName(mop, "Mop");   
         LanguageRegistry.addName(food, "My Food");   
         LanguageRegistry.addName(apple, "My Apple");  
         LanguageRegistry.addName(glassBow, "Glass Bow");   
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
-        
+
         GameRegistry.addRecipe(new ItemStack(mopBukket, 1), new Object[] {"   "," X ","X X", Character.valueOf('X'), Item.ingotIron});
+        GameRegistry.addRecipe(new ItemStack(pollutedBlock, 64), new Object[] {"   "," X ","X X", Character.valueOf('X'), Item.ingotIron});
         GameRegistry.addRecipe(new ItemStack(mop, 4), new Object[] {"XXX","XXX","XXX", Character.valueOf('X'), mopBukket});
         GameRegistry.addRecipe(new ItemStack(food, 4), new Object[] {"   "," X "," X ", Character.valueOf('X'), Item.ingotIron});
         GameRegistry.addRecipe(new ItemStack(apple, 4), new Object[] {" X "," X "," X ", Character.valueOf('X'), Item.ingotIron});

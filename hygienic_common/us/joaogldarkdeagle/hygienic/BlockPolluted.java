@@ -1,6 +1,5 @@
 package us.joaogldarkdeagle.hygienic;
 
-import java.awt.Event;
 import java.util.Random;
 
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
@@ -8,7 +7,6 @@ import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,6 +20,7 @@ public class BlockPolluted extends Block {
         super(par1, par2Material);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.005F, 1.0F);
         this.setTickRandomly(true);
+        //this.setHardness(-1.0F);
         this.setStepSound(Block.soundSnowFootstep);
         this.setCreativeTab(Hygienic.hygienicTab);
     }

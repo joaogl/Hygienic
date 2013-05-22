@@ -59,6 +59,7 @@ public class Hygienic {
         LanguageRegistry.addName(food, "My Food");   
         LanguageRegistry.addName(apple, "My Apple");  
         LanguageRegistry.addName(glassBow, "Glass Bow");   
+        LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
         
         GameRegistry.addRecipe(new ItemStack(mopBukket, 1), new Object[] {"   "," X ","X X", Character.valueOf('X'), Item.ingotIron});
         GameRegistry.addRecipe(new ItemStack(mop, 4), new Object[] {"XXX","XXX","XXX", Character.valueOf('X'), mopBukket});

@@ -1,5 +1,6 @@
-package us.joaogldarkdeagle.hygienic;
+package us.joaogldarkdeagle.hygienic.lib;
 
+import us.joaogldarkdeagle.hygienic.Hygienic;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -10,7 +11,7 @@ public class HygienicTab extends CreativeTabs {
     }
     
     public ItemStack getIconItemStack() {
-        return new ItemStack(Hygienic.apple);
+        return new ItemStack(Hygienic.mop);
     }
 
 }

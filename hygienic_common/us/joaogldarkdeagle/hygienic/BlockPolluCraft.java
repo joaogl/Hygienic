@@ -3,6 +3,7 @@ package us.joaogldarkdeagle.hygienic;
 import java.util.Random;
 
 import us.joaogldarkdeagle.hygienic.gui.TileGui;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,10 +17,14 @@ import net.minecraft.world.World;
 
 public class BlockPolluCraft extends Block {
 
-    public BlockPolluCraft(int par1, Material par2Material, String texture) {
+    String texture;
+    
+    public BlockPolluCraft(int par1, Material par2Material) {
         super(par1, par2Material);
         this.setStepSound(Block.soundWoodFootstep);
         this.setCreativeTab(Hygienic.hygienicTab);
+        this.texture = ModInfo.polluCraft_Tex;
+        this.setUnlocalizedName("polluCraft_UN");
     }
 
     @Override

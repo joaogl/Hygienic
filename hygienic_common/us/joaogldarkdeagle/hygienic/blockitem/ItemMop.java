@@ -1,5 +1,7 @@
-package us.joaogldarkdeagle.hygienic;
+package us.joaogldarkdeagle.hygienic.blockitem;
 
+import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumAction;
@@ -12,11 +14,13 @@ public class ItemMop extends ItemTool {
     private final EnumToolMaterial toolMaterial;
     public static final Block[] blocksEffectiveAgainst = new Block[] { Hygienic.pollutedBlock };
 
-    public ItemMop(int par1, EnumToolMaterial par2EnumToolMaterial, String texture) {
+    public ItemMop(int par1, EnumToolMaterial par2EnumToolMaterial) {
         super(par1, 2, par2EnumToolMaterial, blocksEffectiveAgainst);
-        this.texture = texture;
+        this.texture = ModInfo.mop_Tex;
         this.toolMaterial = par2EnumToolMaterial;
         this.maxStackSize = 1;
+        this.setUnlocalizedName("Mop");
+        this.setCreativeTab(Hygienic.hygienicTab);
     }
 
     public void registerIcons(IconRegister iconReg) {

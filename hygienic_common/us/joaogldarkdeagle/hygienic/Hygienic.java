@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -22,19 +23,21 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class Hygienic {
-    
+
     @Instance("Hygienic")
     public Hygienic instance;
 
     public static CreativeTabs hygienicTab = new HygienicTab("Hygienic");
     public static Block mopBukket;
     public static Block pollutedBlock;
+    public static Block polluCraft;
     public static Item mop;
     public static Item food;
     public static Item apple;
     public static Item glassBow;
     static String mopBukket_Tex = "Hygienic:Blocks";
     static String polluted_Tex = "Hygienic:Pollu";
+    static String polluCraft_Tex = "Hygienic:PolluCraft";
     static String mop_Tex = "Hygienic:Items";
     static String modFood_Tex = "Hygienic:Food";
     static String modApple_Tex = "Hygienic:Apple";
@@ -42,39 +45,45 @@ public class Hygienic {
 
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
-        
+
     }
 
     @Init
     public void init(FMLInitializationEvent event) {
         mopBukket = new BlockMopBukket(900, Material.grass, mopBukket_Tex).setUnlocalizedName("mopBukket_UN");
         mopBukket.setStepSound(Block.soundMetalFootstep);
-        
+
         mop = (new ItemMop(901, EnumToolMaterial.IRON, mop_Tex)).setUnlocalizedName("Mop").setCreativeTab(hygienicTab);
         food = (new ItemModFood(902, 18, true, modFood_Tex)).setUnlocalizedName("My Food");
         apple = (new ItemModApple(903, 18, false, modFood_Tex)).setUnlocalizedName("My Apple").setPotionEffect("potion.blindness");
         glassBow = (new GlassBow(904, modBow_Tex)).setUnlocalizedName("Glass Bow");
 
         pollutedBlock = new BlockPolluted(905, Material.snow, polluted_Tex).setUnlocalizedName("polluted_UN");
+        MinecraftForge.setBlockHarvestLevel(pollutedBlock, "pickaxe", 2);
+
+        polluCraft = new BlockPolluCraft(906, Material.wood, polluCraft_Tex).setUnlocalizedName("polluCraft_UN");
 
         GameRegistry.registerBlock(mopBukket, "mopBukket_UN");
         GameRegistry.registerBlock(pollutedBlock, "polluted_UN");
+        GameRegistry.registerBlock(polluCraft, "polluCraft_UN");
 
         LanguageRegistry.addName(mopBukket, "Mop Bukket");
-        LanguageRegistry.addName(pollutedBlock, "Polucion");
-        LanguageRegistry.addName(mop, "Mop");   
-        LanguageRegistry.addName(food, "My Food");   
-        LanguageRegistry.addName(apple, "My Apple");  
-        LanguageRegistry.addName(glassBow, "Glass Bow");   
+        LanguageRegistry.addName(pollutedBlock, "Pollution");
+        LanguageRegistry.addName(polluCraft, "PolluCraft");
+        LanguageRegistry.addName(mop, "Mop");
+        LanguageRegistry.addName(food, "My Food");
+        LanguageRegistry.addName(apple, "My Apple");
+        LanguageRegistry.addName(glassBow, "Glass Bow");
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 
-        GameRegistry.addRecipe(new ItemStack(mopBukket, 1), new Object[] {"   "," X ","X X", Character.valueOf('X'), Item.ingotIron});
-        GameRegistry.addRecipe(new ItemStack(pollutedBlock, 64), new Object[] {"   "," X ","X X", Character.valueOf('X'), Item.ingotIron});
-        GameRegistry.addRecipe(new ItemStack(mop, 4), new Object[] {"XXX","XXX","XXX", Character.valueOf('X'), mopBukket});
-        GameRegistry.addRecipe(new ItemStack(food, 4), new Object[] {"   "," X "," X ", Character.valueOf('X'), Item.ingotIron});
-        GameRegistry.addRecipe(new ItemStack(apple, 4), new Object[] {" X "," X "," X ", Character.valueOf('X'), Item.ingotIron});
-        
-        GameRegistry.addRecipe(new ItemStack(glassBow, 1), new Object[] {" XS","X S"," XS", Character.valueOf('X'), Block.glass, Character.valueOf('S'), Item.silk});
+        GameRegistry.addRecipe(new ItemStack(mopBukket, 1), new Object[] { "   ", " X ", "X X", Character.valueOf('X'), Item.ingotIron });
+        GameRegistry.addRecipe(new ItemStack(pollutedBlock, 64), new Object[] { "   ", " X ", "X X", Character.valueOf('X'), Item.ingotIron });
+        GameRegistry.addRecipe(new ItemStack(mop, 4), new Object[] { "XXX", "XXX", "XXX", Character.valueOf('X'), mopBukket });
+        GameRegistry.addRecipe(new ItemStack(food, 4), new Object[] { "   ", " X ", " X ", Character.valueOf('X'), Item.ingotIron });
+        GameRegistry.addRecipe(new ItemStack(apple, 4), new Object[] { " X ", " X ", " X ", Character.valueOf('X'), Item.ingotIron });
+        GameRegistry.addRecipe(new ItemStack(glassBow, 1), new Object[] { " XS", "X S", " XS", Character.valueOf('X'), Block.glass, Character.valueOf('S'), Item.silk });
+
+        GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
     }
 
     @PostInit

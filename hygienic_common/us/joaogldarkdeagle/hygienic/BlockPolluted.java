@@ -19,6 +19,7 @@ public class BlockPolluted extends Block {
     public BlockPolluted(int par1, Material par2Material, String texture) {
         super(par1, par2Material);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.005F, 1.0F);
+        this.setHardness(1F);
         this.setStepSound(Block.soundSnowFootstep);
         this.setCreativeTab(Hygienic.hygienicTab);
         this.texture = texture;
@@ -28,7 +29,7 @@ public class BlockPolluted extends Block {
     public void registerIcons(IconRegister par1IconRegister) {
         this.blockIcon = par1IconRegister.registerIcon(this.texture);
     }
-
+    
     public boolean isBlockReplaceable(World world, int x, int y, int z) {
         return false;
     }

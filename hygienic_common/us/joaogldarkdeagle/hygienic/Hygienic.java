@@ -7,6 +7,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -17,6 +18,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -25,7 +27,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class Hygienic {
 
     @Instance("Hygienic")
-    public Hygienic instance;
+    public static Hygienic instance;
 
     public static CreativeTabs hygienicTab = new HygienicTab("Hygienic");
     public static Block mopBukket;
@@ -59,8 +61,7 @@ public class Hygienic {
         glassBow = (new GlassBow(904, modBow_Tex)).setUnlocalizedName("Glass Bow");
 
         pollutedBlock = new BlockPolluted(905, Material.snow, polluted_Tex).setUnlocalizedName("polluted_UN");
-        MinecraftForge.setBlockHarvestLevel(pollutedBlock, "pickaxe", 2);
-
+        
         polluCraft = new BlockPolluCraft(906, Material.wood, polluCraft_Tex).setUnlocalizedName("polluCraft_UN");
 
         GameRegistry.registerBlock(mopBukket, "mopBukket_UN");
@@ -84,6 +85,8 @@ public class Hygienic {
         GameRegistry.addRecipe(new ItemStack(glassBow, 1), new Object[] { " XS", "X S", " XS", Character.valueOf('X'), Block.glass, Character.valueOf('S'), Item.silk });
 
         GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
+        
+        NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
     }
 
     @PostInit

@@ -45,7 +45,7 @@ public class Hygienic {
     public void init(FMLInitializationEvent event) {
         mop = (new ItemMop(900, EnumToolMaterial.IRON));
         LanguageRegistry.addName(mop, "Mop");
-        GameRegistry.addRecipe(new ItemStack(mop, 1), new Object[] { " S ", " S ", "WWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Block.web});
+        GameRegistry.addRecipe(new ItemStack(mop, 1), new Object[] { " S ", " S ", "WWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
 
         pollutedBlock = new BlockPolluted(901, Material.snow);
         GameRegistry.registerBlock(pollutedBlock, "polluted_UN");

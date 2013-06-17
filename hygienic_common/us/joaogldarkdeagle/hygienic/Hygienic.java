@@ -8,8 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluted;
 import us.joaogldarkdeagle.hygienic.blockitem.ItemMop;
-import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
-import us.joaogldarkdeagle.hygienic.gui.TickHandler;
 import us.joaogldarkdeagle.hygienic.lib.HygienicTab;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
@@ -40,7 +38,6 @@ public class Hygienic {
     public static Block pollutedBlock;
     public static Block polluCraft;
     public static Item mop;
-    public static TickHandler tickHandler;
 
     @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
     public static CommonProxy proxy;
@@ -60,17 +57,12 @@ public class Hygienic {
         GameRegistry.registerBlock(pollutedBlock, "polluted_UN");
         LanguageRegistry.addName(pollutedBlock, "Pollution");
 
-        polluCraft = new BlockPolluCraft(902, Material.wood);
-        GameRegistry.registerBlock(polluCraft, "polluCraft_UN");
-        LanguageRegistry.addName(polluCraft, "PolluCraft");
-        GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
+        //polluCraft = new BlockPolluCraft(902, Material.wood);
+        //GameRegistry.registerBlock(polluCraft, "polluCraft_UN");
+        //LanguageRegistry.addName(polluCraft, "PolluCraft");
+        //GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
 
-        NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
-
-        tickHandler = new TickHandler();
-        TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
-        // MinecraftForge.EVENT_BUS.register(new EntityDamagedEventHandler());
     }
 
     @PostInit

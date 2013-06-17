@@ -50,7 +50,7 @@ public class BlockPolluted extends Block {
     }
 
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-        if (ModInfo.debugin) return true;
+        if (ModInfo.debugging) return true;
         else return false;
     }
 
@@ -64,18 +64,18 @@ public class BlockPolluted extends Block {
     }
 
     public int idDropped(int par1, Random par2Random, int par3) {
-        if (ModInfo.debugin) return 905;
+        if (ModInfo.debugging) return 905;
         else return 0;
     }
 
     public int quantityDropped(Random par1Random) {
-        if (ModInfo.debugin) return 1;
+        if (ModInfo.debugging) return 1;
         else return 0;
     }
 
     @Override
     public int quantityDropped(int meta, int fortune, Random random) {
-        if (ModInfo.debugin) return 1;
+        if (ModInfo.debugging) return 1;
         else return 0;
     }
 

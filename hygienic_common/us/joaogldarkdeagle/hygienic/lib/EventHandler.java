@@ -4,15 +4,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
-
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class EventHandler {
     public EventHandler() {
@@ -47,7 +45,7 @@ public class EventHandler {
                 out.writeInt(2);
                 out.writeBoolean(true);
                 Packet250CustomPayload packet = new Packet250CustomPayload("MoreDecay", bt.toByteArray());
-                Player player = (Player) ent;
+                //Player player = (Player) ent;
                 PacketDispatcher.sendPacketToAllAround(ent.posX, ent.posY, ent.posZ, 0.01, ent.worldObj.provider.dimensionId, packet);
             } catch (IOException ex) {
                 System.out.println("couldnt send packet!");

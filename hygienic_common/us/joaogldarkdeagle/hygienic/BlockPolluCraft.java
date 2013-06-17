@@ -1,16 +1,14 @@
 package us.joaogldarkdeagle.hygienic;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPolluCraft extends Block {
 
@@ -43,6 +41,6 @@ public class BlockPolluCraft extends Block {
 
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
         par5EntityPlayer.displayGUIWorkbench(par2, par3, par4);
-        return true;
+        return false;
     }
 }

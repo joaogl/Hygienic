@@ -42,9 +42,9 @@ public class Hygienic {
     public static Item mop;
     public static TickHandler tickHandler;
 
-    @SidedProxy(clientSide="us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide="us.joaogldarkdeagle.hygienic.net.CommonProxy")
+    @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
     public static CommonProxy proxy;
-    
+
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
 
@@ -58,20 +58,19 @@ public class Hygienic {
 
         pollutedBlock = new BlockPolluted(901, Material.snow);
         GameRegistry.registerBlock(pollutedBlock, "polluted_UN");
-        LanguageRegistry.addName(pollutedBlock, "Pollution");        
-        
+        LanguageRegistry.addName(pollutedBlock, "Pollution");
+
         polluCraft = new BlockPolluCraft(902, Material.wood);
         GameRegistry.registerBlock(polluCraft, "polluCraft_UN");
         LanguageRegistry.addName(polluCraft, "PolluCraft");
         GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
-        
-        
+
         NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
-        
+
         tickHandler = new TickHandler();
         TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
-      //  MinecraftForge.EVENT_BUS.register(new EntityDamagedEventHandler());
+        // MinecraftForge.EVENT_BUS.register(new EntityDamagedEventHandler());
     }
 
     @PostInit

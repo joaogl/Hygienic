@@ -73,15 +73,20 @@ public class BlockPolluted extends Block {
         else return 0;
     }
 
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass() {
+        return 1;
+    }
+
     @Override
     public int quantityDropped(int meta, int fortune, Random random) {
         if (ModInfo.debugging) return 1;
         else return 0;
     }
 
-    @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-        return par5 == 1 ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+        int i = par1IBlockAccess.getBlockId(par2, par3, par4);
+        return i == blockID ? false : true;
     }
 
 }

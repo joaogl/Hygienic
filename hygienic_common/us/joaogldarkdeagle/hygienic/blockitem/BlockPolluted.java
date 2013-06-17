@@ -2,17 +2,16 @@ package us.joaogldarkdeagle.hygienic.blockitem;
 
 import java.util.Random;
 
-import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPolluted extends Block {
     String texture;
@@ -32,47 +31,57 @@ public class BlockPolluted extends Block {
         this.blockIcon = par1IconRegister.registerIcon(this.texture);
     }
 
+    @Override
     public boolean isBlockReplaceable(World world, int x, int y, int z) {
         return false;
     }
 
+    @Override
     public boolean isOpaqueCube() {
         return false;
     }
 
+    @Override
     public boolean renderAsNormalBlock() {
         return false;
     }
 
+    @Override
     public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z) {
         if (canHarvestBlock(player, world.getBlockMetadata(x, y, z))) return world.setBlockToAir(x, y, z);
         else return false;
     }
 
+    @Override
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
         if (ModInfo.debugging) return true;
         else return false;
     }
 
+    @Override
     public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
         if (par1World.getBlockId(par2, (par3 - 1), par4) == 0) par1World.setBlockToAir(par2, par3, par4);
     }
 
+    @Override
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6) {
         super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
         par1World.setBlockToAir(par3, par4, par5);
     }
 
+    @Override
     public int idDropped(int par1, Random par2Random, int par3) {
         if (ModInfo.debugging) return 905;
         else return 0;
     }
 
+    @Override
     public int quantityDropped(Random par1Random) {
         if (ModInfo.debugging) return 1;
         else return 0;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public int getRenderBlockPass() {
         return 1;
@@ -84,9 +93,10 @@ public class BlockPolluted extends Block {
         else return 0;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-        return par5 == 1 ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+    public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side) {
+        if(side == 1) return true;
+        return false;
     }
-
 }

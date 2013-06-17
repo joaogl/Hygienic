@@ -76,8 +76,9 @@ public class BlockPolluted extends Block {
     }
 
     @Override
-    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-        if (par1World.getBlockId(par2, (par3 - 1), par4) == 0) par1World.setBlockToAir(par2, par3, par4);
+    public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
+        if(world.getBlockId(x, (y - 1), z) == 0) world.setBlockToAir(x, y, z);
+        if(world.getBlockId(x, (y + 1), z) != 0) world.destroyBlock(x, y+1, z, true);
     }
 
     @Override

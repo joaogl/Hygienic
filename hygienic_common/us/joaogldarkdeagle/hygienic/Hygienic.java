@@ -26,6 +26,7 @@ import net.minecraft.item.ItemStack;
 import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluted;
 import us.joaogldarkdeagle.hygienic.blockitem.ItemMop;
+import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
 import us.joaogldarkdeagle.hygienic.lib.HygienicTab;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
@@ -39,15 +40,18 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Hygienic", name = "Hygienic", version = "BETA V1.0.0")
+@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class Hygienic {
 
     @Instance("Hygienic")
     public static Hygienic instance;
+
+    private GuiHandler guiHandler = new GuiHandler();
 
     public static CreativeTabs hygienicTab = new HygienicTab("Hygienic");
     public static Block pollutedBlock;
@@ -77,6 +81,8 @@ public class Hygienic {
         GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
 
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
+
+        NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
     }
 
     @PostInit

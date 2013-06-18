@@ -42,7 +42,7 @@ public class CraftingManager {
 
     private CraftingManager() {
         recipes = new ArrayList();
-        this.func_92051_a(new ItemStack(Hygienic.instance.mop, 1), new Object[] { " SS ", " SS ", " SS ", "WWWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
+        this.func_92051_a(new ItemStack(Hygienic.instance.itemMop, 1), new Object[] { " SS ", " SS ", " SS ", "WWWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
 
         Collections.sort(this.recipes, new RecipeSorter(this));
         System.out.println(this.recipes.size() + " recipes");

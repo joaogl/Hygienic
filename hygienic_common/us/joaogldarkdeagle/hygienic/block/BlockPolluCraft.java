@@ -31,8 +31,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
+import us.joaogldarkdeagle.hygienic.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -50,10 +50,11 @@ public class BlockPolluCraft extends Block {
         this.setHardness(2F);
         this.setStepSound(Block.soundMetalFootstep);
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
+        this.setUnlocalizedName(BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
     }
-
+    
     public int idDropped(int par1, Random par2Random, int par3) {
-        return BlockIDs.BLOCK_POLLUCRAFT;
+        return BlockInfo.BLOCK_POLLUCRAFT_ID;
     }
 
     public int quantityDropped(Random par1Random) {
@@ -118,10 +119,10 @@ public class BlockPolluCraft extends Block {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(ModInfo.polluCraft_Sides);
-        this.iconTopBot = par1IconRegister.registerIcon(ModInfo.polluCraft_TopBot);
-        this.iconFront = par1IconRegister.registerIcon(ModInfo.polluCraft_Front);
-        this.iconBack = par1IconRegister.registerIcon(ModInfo.polluCraft_Back);
+        this.blockIcon = par1IconRegister.registerIcon(Textures.BLOCK_POLLUCRAFT_SIDES);
+        this.iconTopBot = par1IconRegister.registerIcon(Textures.BLOCK_POLLUCRAFT_TOPBOT);
+        this.iconFront = par1IconRegister.registerIcon(Textures.BLOCK_POLLUCRAFT_FRONT);
+        this.iconBack = par1IconRegister.registerIcon(Textures.BLOCK_POLLUCRAFT_BACK);
     }
 
     @SideOnly(Side.CLIENT)

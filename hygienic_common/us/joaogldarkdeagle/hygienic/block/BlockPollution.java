@@ -26,21 +26,24 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+import us.joaogldarkdeagle.hygienic.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPolluted extends Block {
-    String texture;
+public class BlockPollution extends Block {
+    private String texture;
+    
 
-    public BlockPolluted(int par1, Material par2Material) {
+    public BlockPollution(int par1, Material par2Material) {
         super(par1, par2Material);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0005F, 1.0F);
         this.setHardness(1F);
         this.setStepSound(Block.soundSnowFootstep);
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
-        this.texture = ModInfo.polluted_Tex;
-        this.setUnlocalizedName("polluted_UN");
+        this.texture = Textures.BLOCK_POLLUTION;
+        this.setUnlocalizedName(BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
     }
 
     @SideOnly(Side.CLIENT)

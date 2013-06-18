@@ -17,8 +17,11 @@
 
 package us.joaogldarkdeagle.hygienic.lib;
 
-public class ItemIDs {
+public class ItemInfo {
     
-    public static final int ITEM_MOP = 902;
-    public static final int ITEM_RUBBER = 903;
+    public static final int ITEM_MOP_ID = 902;
+    public static final String ITEM_MOP_UNLOCALIZEDNAME = ModInfo.MOD_ID + "_itemMop";
+    
+    public static final int ITEM_RUBBER_ID = 903;
+    public static final String ITEM_RUBBER_UNLOCALIZEDNAME = ModInfo.MOD_ID + "_itemRubber";
 }

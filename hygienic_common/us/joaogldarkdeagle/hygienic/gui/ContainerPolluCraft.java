@@ -26,7 +26,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
+import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 
 public class ContainerPolluCraft extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
@@ -76,7 +76,7 @@ public class ContainerPolluCraft extends Container {
     }
 
     public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != BlockIDs.BLOCK_POLLUCRAFT ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != BlockInfo.BLOCK_POLLUCRAFT_ID ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
     }
 
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {

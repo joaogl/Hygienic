@@ -17,14 +17,15 @@
 
 package us.joaogldarkdeagle.hygienic.lib;
 
-public class ModInfo {
-
-    public static final String MOD_ID = "JoaoglDD_Hygienic";
-    public static final String MOD_NAME = "Hygienic";
-    public static final String MOD_VERSION = "BETA V1.0.0";
+public class Textures {
+    public static final String BLOCK_POLLUTION = "Hygienic:Pollu";
     
-    public static final String CREATIVETAB_NAME = "Hygienic";
-
-    public static final boolean debugging = true;
+    public static final String ITEM_MOP = "Hygienic:Mop";
     
+    public static final String BLOCK_POLLUCRAFT_TOPBOT = "Hygienic:polluCraftTopBot";
+    public static final String BLOCK_POLLUCRAFT_SIDES = "Hygienic:polluCraftSides";
+    public static final String BLOCK_POLLUCRAFT_FRONT = "Hygienic:polluCraftFront";
+    public static final String BLOCK_POLLUCRAFT_BACK = "Hygienic:polluCraftBack";
+    
+    public static final String ITEM_RUBBER = "Hygienic:itemRubber";
 }

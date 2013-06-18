@@ -27,6 +27,11 @@ public class ModInfo {
 
     // Textures
     public static String polluted_Tex = "Hygienic:Pollu";
-    public static String polluCraft_Tex = "Hygienic:PolluCraft";
     public static String mop_Tex = "Hygienic:Mop";
+    // PolluCraft Textures
+    public static String polluCraft_TopBot = "Hygienic:PolluCraftTopBot";
+    public static String polluCraft_Sides = "Hygienic:PolluCraftSides";
+    public static String polluCraft_Front = "Hygienic:PolluCraftFront";
+    public static String polluCraft_Back = "Hygienic:PolluCraftBack";
+    
 }

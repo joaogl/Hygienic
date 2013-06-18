@@ -30,6 +30,6 @@ public class CreativeTabHygienic extends CreativeTabs{
 
     @Override
     public ItemStack getIconItemStack() {
-        return new ItemStack(Hygienic.instance.mop);
+        return new ItemStack(Hygienic.instance.itemMop);
     }
 }

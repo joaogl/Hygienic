@@ -17,7 +17,7 @@
 
 package us.joaogldarkdeagle.hygienic.gui;
 
-import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
+import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -32,7 +32,7 @@ public class GuiHandler implements IGuiHandler {
 
         switch (id) {
             case 1:
-                return id == 1 && world.getBlockId(x, y, z) == BlockIDs.BLOCK_POLLUCRAFT ? new ContainerPolluCraft(player.inventory, world, x, y, z) : null;
+                return id == 1 && world.getBlockId(x, y, z) == BlockInfo.BLOCK_POLLUCRAFT_ID ? new ContainerPolluCraft(player.inventory, world, x, y, z) : null;
         }
         return null;
     }
@@ -44,7 +44,7 @@ public class GuiHandler implements IGuiHandler {
 
         switch (id) {
             case 1:
-                return id == 1 && world.getBlockId(x, y, z) == BlockIDs.BLOCK_POLLUCRAFT ? new GuiPolluCraft(player.inventory, world, x, y, z) : null;
+                return id == 1 && world.getBlockId(x, y, z) == BlockInfo.BLOCK_POLLUCRAFT_ID ? new GuiPolluCraft(player.inventory, world, x, y, z) : null;
         }
         return null;
     }

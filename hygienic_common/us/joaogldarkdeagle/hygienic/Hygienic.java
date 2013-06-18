@@ -85,7 +85,6 @@ public class Hygienic {
         LanguageRegistry.addName(mop, "Mop");
 
         rubber = (new ItemRubber(ItemIDs.ITEM_RUBBER));
-        LanguageRegistry.addName(rubber, "Rubber");
         
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 

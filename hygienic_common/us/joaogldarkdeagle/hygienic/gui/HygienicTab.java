@@ -15,7 +15,7 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.lib;
+package us.joaogldarkdeagle.hygienic.gui;
 
 import us.joaogldarkdeagle.hygienic.Hygienic;
 import net.minecraft.creativetab.CreativeTabs;

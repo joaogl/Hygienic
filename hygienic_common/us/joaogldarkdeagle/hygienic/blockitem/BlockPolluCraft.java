@@ -53,9 +53,8 @@ public class BlockPolluCraft extends Block {
         return Hygienic.polluCraft.blockID;
     }
 
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2) {
-        return par1 == 1 || par1 == 0 ? this.IconTopBot : par1 == 2 || par1 == 3 ? this.blockIcon : par1 == 4 ? this.IconFront : this.IconBack;
+    public int quantityDropped(Random par1Random) {
+        return 1;
     }
 
     @SideOnly(Side.CLIENT)
@@ -63,8 +62,14 @@ public class BlockPolluCraft extends Block {
         if (par5 == 1 || par5 == 0) return this.IconTopBot;
         else {
             int par6 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
-            if (par5 != par6) return this.blockIcon;
-            else return this.IconFront;
+            if (par5 == 2)
+            ;
+            if (par5 == 3)
+            ;
+            if (par5 == 4)
+            ;
+            if (par5 == 5)
+            ;
         }
     }
 

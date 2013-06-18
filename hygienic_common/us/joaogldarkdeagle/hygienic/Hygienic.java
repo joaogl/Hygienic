@@ -27,7 +27,7 @@ import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluted;
 import us.joaogldarkdeagle.hygienic.blockitem.ItemMop;
 import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
-import us.joaogldarkdeagle.hygienic.lib.HygienicTab;
+import us.joaogldarkdeagle.hygienic.gui.HygienicTab;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
 import cpw.mods.fml.common.Mod;

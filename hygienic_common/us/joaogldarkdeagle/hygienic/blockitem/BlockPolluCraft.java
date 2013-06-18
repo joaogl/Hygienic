@@ -34,10 +34,7 @@ public class BlockPolluCraft extends Block {
         if (!player.isSneaking()) {
             player.openGui(Hygienic.instance, 1, var1, var2, var3, var4);
             return true;
-        } else {
-            return false;
-        }
-
+        } else return false;
     }
 
 }

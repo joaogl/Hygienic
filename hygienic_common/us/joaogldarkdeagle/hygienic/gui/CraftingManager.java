@@ -79,13 +79,9 @@ public class CraftingManager {
             Character var13 = (Character) par2ArrayOfObj[var4];
             ItemStack var14 = null;
 
-            if (par2ArrayOfObj[var4 + 1] instanceof Item) {
-                var14 = new ItemStack((Item) par2ArrayOfObj[var4 + 1]);
-            } else if (par2ArrayOfObj[var4 + 1] instanceof Block) {
-                var14 = new ItemStack((Block) par2ArrayOfObj[var4 + 1], 1, -1);
-            } else if (par2ArrayOfObj[var4 + 1] instanceof ItemStack) {
-                var14 = (ItemStack) par2ArrayOfObj[var4 + 1];
-            }
+            if (par2ArrayOfObj[var4 + 1] instanceof Item) var14 = new ItemStack((Item) par2ArrayOfObj[var4 + 1]);
+            else if (par2ArrayOfObj[var4 + 1] instanceof Block) var14 = new ItemStack((Block) par2ArrayOfObj[var4 + 1], 1, -1);
+            else if (par2ArrayOfObj[var4 + 1] instanceof ItemStack) var14 = (ItemStack) par2ArrayOfObj[var4 + 1];
 
             var12.put(var13, var14);
         }
@@ -95,11 +91,9 @@ public class CraftingManager {
         for (int var16 = 0; var16 < var5 * var6; ++var16) {
             char var10 = var3.charAt(var16);
 
-            if (var12.containsKey(Character.valueOf(var10))) {
-                var15[var16] = ((ItemStack) var12.get(Character.valueOf(var10))).copy();
-            } else {
-                var15[var16] = null;
-            }
+            if (var12.containsKey(Character.valueOf(var10))) var15[var16] = ((ItemStack) var12.get(Character.valueOf(var10))).copy();
+            else var15[var16] = null;
+
         }
 
         ShapedRecipes var17 = new ShapedRecipes(var5, var6, var15, par1ItemStack);
@@ -115,19 +109,13 @@ public class CraftingManager {
         for (int var6 = 0; var6 < var5; ++var6) {
             Object var7 = var4[var6];
 
-            if (var7 instanceof ItemStack) {
-                var3.add(((ItemStack) var7).copy());
-            } else if (var7 instanceof Item) {
-                var3.add(new ItemStack((Item) var7));
-            } else {
-                if (!(var7 instanceof Block)) {
-                    throw new RuntimeException("Invalid shapeless recipy!");
-                }
-
+            if (var7 instanceof ItemStack) var3.add(((ItemStack) var7).copy());
+            else if (var7 instanceof Item) var3.add(new ItemStack((Item) var7));
+            else {
+                if (!(var7 instanceof Block)) throw new RuntimeException("Invalid shapeless recipy!");
                 var3.add(new ItemStack((Block) var7));
             }
         }
-
         this.recipes.add(new ShapelessRecipes(par1ItemStack, var3));
     }
 
@@ -139,16 +127,9 @@ public class CraftingManager {
 
         for (var6 = 0; var6 < par1InventoryCrafting.getSizeInventory(); ++var6) {
             ItemStack var7 = par1InventoryCrafting.getStackInSlot(var6);
-
             if (var7 != null) {
-                if (var3 == 0) {
-                    var4 = var7;
-                }
-
-                if (var3 == 1) {
-                    var5 = var7;
-                }
-
+                if (var3 == 0) var4 = var7;
+                if (var3 == 1) var5 = var7;
                 ++var3;
             }
         }
@@ -160,20 +141,14 @@ public class CraftingManager {
             int var9 = var13 + var8 + var11.getMaxDamage() * 5 / 100;
             int var10 = var11.getMaxDamage() - var9;
 
-            if (var10 < 0) {
-                var10 = 0;
-            }
+            if (var10 < 0) var10 = 0;
 
             return new ItemStack(var4.itemID, 1, var10);
         } else {
             for (var6 = 0; var6 < this.recipes.size(); ++var6) {
                 IRecipe var12 = (IRecipe) this.recipes.get(var6);
-
-                if (var12.matches(par1InventoryCrafting, par2World)) {
-                    return var12.getCraftingResult(par1InventoryCrafting);
-                }
+                if (var12.matches(par1InventoryCrafting, par2World)) return var12.getCraftingResult(par1InventoryCrafting);
             }
-
             return null;
         }
     }

@@ -18,11 +18,10 @@
 package us.joaogldarkdeagle.hygienic.gui;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import us.joaogldarkdeagle.hygienic.Hygienic;
-import java.util.Collections;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -31,11 +30,13 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
+import us.joaogldarkdeagle.hygienic.Hygienic;
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class CraftingManager {
     private static final CraftingManager instance = new CraftingManager();
 
-    private List recipes = new ArrayList();
+    private List recipes;
 
     public static final CraftingManager getInstance() {
         return instance;
@@ -43,7 +44,7 @@ public class CraftingManager {
 
     private CraftingManager() {
         recipes = new ArrayList();
-        this.func_92051_a(new ItemStack(Hygienic.mop, 1), new Object[] { " SS ", " SSW", "WWWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
+        this.func_92051_a(new ItemStack(Hygienic.instance.mop, 1), new Object[] { " SS ", " SSW", "WWWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
 
         Collections.sort(this.recipes, new RecipeSorter(this));
         System.out.println(this.recipes.size() + " recipes");

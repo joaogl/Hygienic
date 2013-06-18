@@ -17,7 +17,7 @@
 
 package us.joaogldarkdeagle.hygienic.gui;
 
-import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -27,22 +27,24 @@ public class GuiHandler implements IGuiHandler {
 
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 
+        @SuppressWarnings("unused")
         TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
 
         switch (id) {
             case 1:
-                return id == 1 && world.getBlockId(x, y, z) == Hygienic.polluCraft.blockID ? new ContainerPolluCraft(player.inventory, world, x, y, z) : null;
+                return id == 1 && world.getBlockId(x, y, z) == BlockIDs.BLOCK_POLLUCRAFT ? new ContainerPolluCraft(player.inventory, world, x, y, z) : null;
         }
         return null;
     }
 
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
 
+        @SuppressWarnings("unused")
         TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
 
         switch (id) {
             case 1:
-                return id == 1 && world.getBlockId(x, y, z) == Hygienic.polluCraft.blockID ? new GuiPolluCraft(player.inventory, world, x, y, z) : null;
+                return id == 1 && world.getBlockId(x, y, z) == BlockIDs.BLOCK_POLLUCRAFT ? new GuiPolluCraft(player.inventory, world, x, y, z) : null;
         }
         return null;
     }

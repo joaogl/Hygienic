@@ -31,6 +31,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -50,7 +51,7 @@ public class BlockPolluCraft extends Block {
     }
 
     public int idDropped(int par1, Random par2Random, int par3) {
-        return Hygienic.polluCraft.blockID;
+        return BlockIDs.BLOCK_POLLUCRAFT;
     }
 
     public int quantityDropped(Random par1Random) {

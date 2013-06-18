@@ -56,9 +56,9 @@ public class Hygienic {
     private GuiHandler guiHandler = new GuiHandler();
 
     public static CreativeTabs hygienicCreativeTab = new CreativeTabHygienic();
-    public static Block pollutedBlock;
-    public static Block polluCraft;
-    public static Item mop;
+    public Block pollutedBlock;
+    public Block polluCraft;
+    public Item mop;
 
     @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
     public static CommonProxy proxy;

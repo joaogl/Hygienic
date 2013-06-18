@@ -18,6 +18,7 @@
 package us.joaogldarkdeagle.hygienic.blockitem;
 
 import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -29,7 +30,7 @@ import net.minecraft.item.ItemTool;
 public class ItemMop extends ItemTool {
     private String texture;
     private final EnumToolMaterial toolMaterial;
-    public static final Block[] blocksEffectiveAgainst = new Block[] { Hygienic.pollutedBlock };
+    public static final Block[] blocksEffectiveAgainst = new Block[] { Hygienic.instance.pollutedBlock };
 
     public ItemMop(int par1, EnumToolMaterial par2EnumToolMaterial) {
         super(par1, 2, par2EnumToolMaterial, blocksEffectiveAgainst);
@@ -53,7 +54,7 @@ public class ItemMop extends ItemTool {
     }
 
     public boolean canHarvestBlock(Block par1Block) {
-        return par1Block.blockID == Hygienic.pollutedBlock.blockID;
+        return par1Block.blockID == BlockIDs.BLOCK_POLLUTION;
     }
 
     public EnumAction getItemUseAction(ItemStack par1ItemStack) {

@@ -42,7 +42,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
+@Mod(modid = "Hygienic", name = "Hygienic", version = "BETA V1.0.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class Hygienic {
 

@@ -15,7 +15,7 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.blockitem;
+package us.joaogldarkdeagle.hygienic.block;
 
 import java.util.Random;
 
@@ -77,8 +77,21 @@ public class BlockPolluted extends Block {
 
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
+        int blockX;
+        int blockY;
+        int blockZ;
         if(world.getBlockId(x, (y - 1), z) == 0) world.setBlockToAir(x, y, z);
-        if(world.getBlockId(x, (y + 1), z) != 0) world.destroyBlock(x, y+1, z, true);
+        blockX = x;
+        blockY = y + 1;
+        blockZ = z;
+        int blockAboveId = world.getBlockId(blockX, blockY, blockZ);
+        if(blockAboveId != 0) {
+            if(blockAboveId == Block.waterMoving.blockID ||
+               blockAboveId == Block.waterStill.blockID)
+               return;
+            
+            world.destroyBlock(blockX, blockY, blockZ, true);
+        }
     }
 
     @Override

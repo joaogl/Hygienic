@@ -20,4 +20,5 @@ package us.joaogldarkdeagle.hygienic.lib;
 public class ItemIDs {
     
     public static final int ITEM_MOP = 902;
+    public static final int ITEM_RUBBER = 903;
 }

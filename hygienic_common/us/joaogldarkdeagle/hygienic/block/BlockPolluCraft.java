@@ -15,7 +15,7 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.blockitem;
+package us.joaogldarkdeagle.hygienic.block;
 
 import java.util.Random;
 

@@ -17,21 +17,19 @@
 
 package us.joaogldarkdeagle.hygienic.creativetabs;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import us.joaogldarkdeagle.hygienic.lib.ItemIDs;
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 
 public class CreativeTabHygienic extends CreativeTabs{
     
     public CreativeTabHygienic() {
-        super(ModInfo.CREATIVETAB_NAME);
+        super(CreativeTabs.getNextID(), ModInfo.CREATIVETAB_NAME);
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public int getTabIconItemIndex() {
-        return ItemIDs.ITEM_MOP;
+    public ItemStack getIconItemStack() {
+        return new ItemStack(Hygienic.instance.mop);
     }
 }

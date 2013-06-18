@@ -15,7 +15,7 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.blockitem;
+package us.joaogldarkdeagle.hygienic.item;
 
 import us.joaogldarkdeagle.hygienic.Hygienic;
 import us.joaogldarkdeagle.hygienic.lib.BlockIDs;

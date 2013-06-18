@@ -23,11 +23,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluCraft;
-import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluted;
-import us.joaogldarkdeagle.hygienic.blockitem.ItemMop;
+import us.joaogldarkdeagle.hygienic.block.BlockPolluCraft;
+import us.joaogldarkdeagle.hygienic.block.BlockPolluted;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
 import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
+import us.joaogldarkdeagle.hygienic.item.ItemMop;
+import us.joaogldarkdeagle.hygienic.item.ItemRubber;
 import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
 import us.joaogldarkdeagle.hygienic.lib.ItemIDs;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
@@ -59,6 +60,7 @@ public class Hygienic {
     public Block pollutedBlock;
     public Block polluCraft;
     public Item mop;
+    public Item rubber;
 
     @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
     public static CommonProxy proxy;
@@ -82,6 +84,9 @@ public class Hygienic {
         mop = (new ItemMop(ItemIDs.ITEM_MOP, EnumToolMaterial.IRON));
         LanguageRegistry.addName(mop, "Mop");
 
+        rubber = (new ItemRubber(ItemIDs.ITEM_RUBBER));
+        LanguageRegistry.addName(rubber, "Rubber");
+        
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 
         NetworkRegistry.instance().registerGuiHandler(this, guiHandler);

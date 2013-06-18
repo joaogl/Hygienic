@@ -74,11 +74,11 @@ public class Hygienic {
     @Init
     public void init(FMLInitializationEvent event) {
         blockPollution = new BlockPollution(BlockInfo.BLOCK_POLLUTION_ID, Material.snow);
-        GameRegistry.registerBlock(blockPollution, "polluted_UN");
+        GameRegistry.registerBlock(blockPollution, BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
         LanguageRegistry.addName(blockPollution, "Pollution");
 
         blockPolluCraft = new BlockPolluCraft(BlockInfo.BLOCK_POLLUCRAFT_ID, Material.iron);
-        GameRegistry.registerBlock(blockPolluCraft, "polluCraft_UN");
+        GameRegistry.registerBlock(blockPolluCraft, BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
         LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
         GameRegistry.addRecipe(new ItemStack(blockPolluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
 

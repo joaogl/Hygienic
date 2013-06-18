@@ -19,10 +19,6 @@ package us.joaogldarkdeagle.hygienic.blockitem;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -34,6 +30,10 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPolluCraft extends Block {
 
@@ -46,7 +46,7 @@ public class BlockPolluCraft extends Block {
 
     public BlockPolluCraft(int par1, Material material) {
         super(par1, material);
-        this.setCreativeTab(Hygienic.hygienicTab);
+        this.setCreativeTab(Hygienic.hygienicCreativeTab);
     }
 
     public int idDropped(int par1, Random par2Random, int par3) {
@@ -71,6 +71,7 @@ public class BlockPolluCraft extends Block {
             if (par5 == 5)
             ;
         }
+        return null;
     }
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4) {

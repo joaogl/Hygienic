@@ -26,8 +26,10 @@ import net.minecraft.item.ItemStack;
 import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.blockitem.BlockPolluted;
 import us.joaogldarkdeagle.hygienic.blockitem.ItemMop;
+import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
 import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
-import us.joaogldarkdeagle.hygienic.gui.HygienicTab;
+import us.joaogldarkdeagle.hygienic.lib.BlockIDs;
+import us.joaogldarkdeagle.hygienic.lib.ItemIDs;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -53,7 +55,7 @@ public class Hygienic {
 
     private GuiHandler guiHandler = new GuiHandler();
 
-    public static CreativeTabs hygienicTab = new HygienicTab("Hygienic");
+    public static CreativeTabs hygienicCreativeTab = new CreativeTabHygienic();
     public static Block pollutedBlock;
     public static Block polluCraft;
     public static Item mop;
@@ -68,16 +70,16 @@ public class Hygienic {
 
     @Init
     public void init(FMLInitializationEvent event) {
-        pollutedBlock = new BlockPolluted(900, Material.snow);
+        pollutedBlock = new BlockPolluted(BlockIDs.BLOCK_POLLUTION, Material.snow);
         GameRegistry.registerBlock(pollutedBlock, "polluted_UN");
         LanguageRegistry.addName(pollutedBlock, "Pollution");
 
-        polluCraft = new BlockPolluCraft(901, Material.iron);
+        polluCraft = new BlockPolluCraft(BlockIDs.BLOCK_POLLUCRAFT, Material.iron);
         GameRegistry.registerBlock(polluCraft, "polluCraft_UN");
         LanguageRegistry.addName(polluCraft, "PolluCraft");
         GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
 
-        mop = (new ItemMop(902, EnumToolMaterial.IRON));
+        mop = (new ItemMop(ItemIDs.ITEM_MOP, EnumToolMaterial.IRON));
         LanguageRegistry.addName(mop, "Mop");
 
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");

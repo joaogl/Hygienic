@@ -37,7 +37,7 @@ public class ItemMop extends ItemTool {
         this.toolMaterial = par2EnumToolMaterial;
         this.maxStackSize = 1;
         this.setUnlocalizedName("Mop");
-        this.setCreativeTab(Hygienic.hygienicTab);
+        this.setCreativeTab(Hygienic.hygienicCreativeTab);
     }
 
     public void registerIcons(IconRegister iconReg) {

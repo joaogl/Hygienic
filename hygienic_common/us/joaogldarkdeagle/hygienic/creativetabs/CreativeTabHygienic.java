@@ -15,20 +15,23 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.gui;
+package us.joaogldarkdeagle.hygienic.creativetabs;
 
-import us.joaogldarkdeagle.hygienic.Hygienic;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import us.joaogldarkdeagle.hygienic.lib.ItemIDs;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
 
-public class HygienicTab extends CreativeTabs {
-
-    public HygienicTab(String name) {
-        super(name);
-    }
+public class CreativeTabHygienic extends CreativeTabs{
     
-    public ItemStack getIconItemStack() {
-        return new ItemStack(Hygienic.mop);
+    public CreativeTabHygienic() {
+        super(ModInfo.CREATIVETAB_NAME);
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getTabIconItemIndex() {
+        return ItemIDs.ITEM_MOP;
+    }
 }

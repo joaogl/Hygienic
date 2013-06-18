@@ -38,7 +38,7 @@ public class BlockPolluted extends Block {
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0005F, 1.0F);
         this.setHardness(1F);
         this.setStepSound(Block.soundSnowFootstep);
-        this.setCreativeTab(Hygienic.hygienicTab);
+        this.setCreativeTab(Hygienic.hygienicCreativeTab);
         this.texture = ModInfo.polluted_Tex;
         this.setUnlocalizedName("polluted_UN");
     }

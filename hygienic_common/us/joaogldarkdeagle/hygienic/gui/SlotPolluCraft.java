@@ -59,18 +59,6 @@ public class SlotPolluCraft extends Slot {
     protected void onCrafting(ItemStack par1ItemStack) {
         par1ItemStack.onCrafting(this.thePlayer.worldObj, this.thePlayer, this.amountCrafted);
         this.amountCrafted = 0;
-
-        if (par1ItemStack.itemID == Block.workbench.blockID) this.thePlayer.addStat(AchievementList.buildWorkBench, 1);
-        else if (par1ItemStack.itemID == Item.pickaxeWood.itemID) this.thePlayer.addStat(AchievementList.buildPickaxe, 1);
-        else if (par1ItemStack.itemID == Block.furnaceIdle.blockID) this.thePlayer.addStat(AchievementList.buildFurnace, 1);
-        else if (par1ItemStack.itemID == Item.hoeWood.itemID) this.thePlayer.addStat(AchievementList.buildHoe, 1);
-        else if (par1ItemStack.itemID == Item.bread.itemID) this.thePlayer.addStat(AchievementList.makeBread, 1);
-        else if (par1ItemStack.itemID == Item.cake.itemID) this.thePlayer.addStat(AchievementList.bakeCake, 1);
-        else if (par1ItemStack.itemID == Item.pickaxeStone.itemID) this.thePlayer.addStat(AchievementList.buildBetterPickaxe, 1);
-        else if (par1ItemStack.itemID == Item.swordWood.itemID) this.thePlayer.addStat(AchievementList.buildSword, 1);
-        else if (par1ItemStack.itemID == Block.enchantmentTable.blockID) this.thePlayer.addStat(AchievementList.enchantments, 1);
-        else if (par1ItemStack.itemID == Block.bookShelf.blockID) this.thePlayer.addStat(AchievementList.bookcase, 1);
-
     }
 
     public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack) {

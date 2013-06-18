@@ -26,13 +26,16 @@ import org.lwjgl.opengl.GL11;
 
 public class GuiPolluCraft extends GuiContainer {
 
+    protected int xSize = 176;
+    protected int ySize = 195;
+    
     public GuiPolluCraft(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
         super(new ContainerPolluCraft(par1InventoryPlayer, par2World, par3, par4, par5));
     }
 
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        this.fontRenderer.drawString(StatCollector.translateToLocal("container.crafting"), 28, 6, 4210752);
-        this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(StatCollector.translateToLocal("container.crafting"), 10, -6, 4210752);
+        this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 10, 85, 4210752);
     }
 
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {

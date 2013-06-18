@@ -68,17 +68,17 @@ public class Hygienic {
 
     @Init
     public void init(FMLInitializationEvent event) {
-        mop = (new ItemMop(900, EnumToolMaterial.IRON));
-        LanguageRegistry.addName(mop, "Mop");
-
-        pollutedBlock = new BlockPolluted(901, Material.snow);
+        pollutedBlock = new BlockPolluted(900, Material.snow);
         GameRegistry.registerBlock(pollutedBlock, "polluted_UN");
         LanguageRegistry.addName(pollutedBlock, "Pollution");
 
-        polluCraft = new BlockPolluCraft(902, Material.iron);
+        polluCraft = new BlockPolluCraft(901, Material.iron);
         GameRegistry.registerBlock(polluCraft, "polluCraft_UN");
         LanguageRegistry.addName(polluCraft, "PolluCraft");
         GameRegistry.addRecipe(new ItemStack(polluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
+
+        mop = (new ItemMop(902, EnumToolMaterial.IRON));
+        LanguageRegistry.addName(mop, "Mop");
 
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 

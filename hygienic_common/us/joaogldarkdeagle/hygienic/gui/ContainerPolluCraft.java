@@ -29,7 +29,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerPolluCraft extends Container {
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
     public IInventory craftResult = new InventoryCraftResult();
     private World worldObj;
     private int posX;
@@ -43,19 +43,23 @@ public class ContainerPolluCraft extends Container {
         this.posZ = par5;
 
         this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 150, 35));
         int var6;
         int var7;
 
-        for (var6 = 0; var6 < 3; ++var6)
-            for (var7 = 0; var7 < 3; ++var7)
+        for (var6 = 0; var6 < 4; ++var6)
+            for (var7 = 0; var7 < 4; ++var7)
                 this.addSlotToContainer(new Slot(this.craftMatrix, var7 + var6 * 3, 30 + var7 * 18, 17 + var6 * 18));
 
+        // var7 + var6 * 9 + 2 = no Idea... but it crash the game so dont change
+        // it!; 8 + var7 * 18 = size of it; 100 + var6 * 18 = y
         for (var6 = 0; var6 < 3; ++var6)
             for (var7 = 0; var7 < 9; ++var7)
-                this.addSlotToContainer(new Slot(par1InventoryPlayer, var7 + var6 * 9 + 9, 8 + var7 * 18, 84 + var6 * 18));
+                this.addSlotToContainer(new Slot(par1InventoryPlayer, var7 + var6 * 9 + 2, 8 + var7 * 18, 98 + var6 * 18));
 
+        // var6 = slotID; 8 + var6 * 18 = empty space between each slot; 156 = y
         for (var6 = 0; var6 < 9; ++var6)
-            this.addSlotToContainer(new Slot(par1InventoryPlayer, var6, 8 + var6 * 18, 142));
+            this.addSlotToContainer(new Slot(par1InventoryPlayer, var6, 8 + var6 * 18, 156));
 
         this.onCraftMatrixChanged(this.craftMatrix);
     }

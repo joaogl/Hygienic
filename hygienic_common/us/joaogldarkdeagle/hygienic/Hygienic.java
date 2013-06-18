@@ -48,7 +48,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class Hygienic {
 
-    @Instance("Hygienic")
+    @Instance(ModInfo.MOD_ID)
     public static Hygienic instance;
 
     private GuiHandler guiHandler = new GuiHandler();

@@ -42,26 +42,20 @@ public class ContainerPolluCraft extends Container {
         this.posY = par4;
         this.posZ = par5;
 
-        this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 121, 33));
-        //this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 149, 33));
+        this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 121, 34));
         int var6;
         int var7;
 
-        // var7 + var6 * 5= no Idea... but it crash the game so dont change
-        // it!;
         for (var6 = 0; var6 < 4; var6++)
             for (var7 = 0; var7 < 4; var7++)
-                this.addSlotToContainer(new Slot(this.craftMatrix, var7 + var6 * 3, 8 + var7 * 18, 6 + var6 * 18));
+                this.addSlotToContainer(new Slot(this.craftMatrix, var7 + var6 * 4, 8 + var7 * 18, 7 + var6 * 18));
 
-        // var7 + var6 * 9 + 2 = no Idea... but it crash the game so dont change
-        // it!; 8 + var7 * 18 = size of it; 100 + var6 * 18 = y
-        for (var6 = 0; var6 < 3; ++var6)
-            for (var7 = 0; var7 < 9; ++var7)
-                this.addSlotToContainer(new Slot(par1InventoryPlayer, var7 + var6 * 9 + 2, 8 + var7 * 18, 98 + var6 * 18));
+        for (int i1 = 0; i1 < 3; i1++)
+            for (int l1 = 0; l1 < 9; l1++)
+                this.addSlotToContainer(new Slot(par1InventoryPlayer, l1 + i1 * 9 + 9, 8 + l1 * 18, 99 + i1 * 18));
 
-        // var6 = slotID; 8 + var6 * 18 = empty space between each slot; 156 = y
-        for (var6 = 0; var6 < 9; ++var6)
-            this.addSlotToContainer(new Slot(par1InventoryPlayer, var6, 8 + var6 * 18, 156));
+        for (int j1 = 0; j1 < 9; j1++)
+            this.addSlotToContainer(new Slot(par1InventoryPlayer, j1, 8 + j1 * 18, 157));
 
         this.onCraftMatrixChanged(this.craftMatrix);
     }
@@ -74,7 +68,7 @@ public class ContainerPolluCraft extends Container {
         super.onCraftGuiClosed(par1EntityPlayer);
 
         if (!this.worldObj.isRemote) {
-            for (int var2 = 0; var2 < 9; ++var2) {
+            for (int var2 = 0; var2 < 16; ++var2) {
                 ItemStack var3 = this.craftMatrix.getStackInSlotOnClosing(var2);
                 if (var3 != null) par1EntityPlayer.dropPlayerItem(var3);
             }

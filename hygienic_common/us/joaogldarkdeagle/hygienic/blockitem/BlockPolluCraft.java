@@ -39,14 +39,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockPolluCraft extends Block {
 
     @SideOnly(Side.CLIENT)
-    private Icon IconTopBot;
+    private Icon iconTopBot;
     @SideOnly(Side.CLIENT)
-    private Icon IconFront;
+    private Icon iconFront;
     @SideOnly(Side.CLIENT)
-    private Icon IconBack;
+    private Icon iconBack;
 
     public BlockPolluCraft(int par1, Material material) {
         super(par1, material);
+        this.setHardness(2F);
+        this.setStepSound(Block.soundMetalFootstep);
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
     }
 
@@ -60,19 +62,28 @@ public class BlockPolluCraft extends Block {
 
     @SideOnly(Side.CLIENT)
     public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-        if (par5 == 1 || par5 == 0) return this.IconTopBot;
+        if (par5 == 1 || par5 == 0) return this.iconTopBot;
         else {
             int par6 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
-            if (par5 == 2)
-            ;
-            if (par5 == 3)
-            ;
-            if (par5 == 4)
-            ;
-            if (par5 == 5)
-            ;
+            if (par5 == 2) {
+                if (par6 == 2) return this.iconFront;
+                else if (par6 == 3) return this.iconBack;
+                else return this.blockIcon;
+            } else if (par5 == 3) {
+                if (par6 == 3) return this.iconFront;
+                else if (par6 == 2) return this.iconBack;
+                else return this.blockIcon;
+            } else if (par5 == 4) {
+                if (par6 == 4) return this.iconFront;
+                else if (par6 == 5) return this.iconBack;
+                else return this.blockIcon;
+            } else if (par5 == 5) {
+                if (par6 == 5) return this.iconFront;
+                else if (par6 == 4) return this.iconBack;
+                else return this.blockIcon;
+            }
         }
-        return null;
+        return this.blockIcon;
     }
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4) {
@@ -108,11 +119,12 @@ public class BlockPolluCraft extends Block {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
         this.blockIcon = par1IconRegister.registerIcon(ModInfo.polluCraft_Sides);
-        this.IconTopBot = par1IconRegister.registerIcon(ModInfo.polluCraft_TopBot);
-        this.IconFront = par1IconRegister.registerIcon(ModInfo.polluCraft_Front);
-        this.IconBack = par1IconRegister.registerIcon(ModInfo.polluCraft_Back);
+        this.iconTopBot = par1IconRegister.registerIcon(ModInfo.polluCraft_TopBot);
+        this.iconFront = par1IconRegister.registerIcon(ModInfo.polluCraft_Front);
+        this.iconBack = par1IconRegister.registerIcon(ModInfo.polluCraft_Back);
     }
 
+    @SideOnly(Side.CLIENT)
     public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer player, int var6, float var7, float var8, float var9) {
         if (!player.isSneaking()) {
             player.openGui(Hygienic.instance, 1, var1, var2, var3, var4);

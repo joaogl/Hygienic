@@ -20,18 +20,16 @@ package us.joaogldarkdeagle.hygienic.gui;
 import java.util.Comparator;
 
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
 
 public class RecipeSorter implements Comparator {
-    final CraftingManager smithsCraftingManager;
+    final CraftingManager CraftingManager;
 
-    RecipeSorter(CraftingManager par1SmithsCraftingManager) {
-        this.smithsCraftingManager = par1SmithsCraftingManager;
+    RecipeSorter(CraftingManager par1CraftingManager) {
+        this.CraftingManager = par1CraftingManager;
     }
 
     public int compareRecipes(IRecipe par1IRecipe, IRecipe par2IRecipe) {
-        return par1IRecipe instanceof ShapelessRecipes && par2IRecipe instanceof ShapedRecipes ? 1 : (par2IRecipe instanceof ShapelessRecipes && par1IRecipe instanceof ShapedRecipes ? -1 : (par2IRecipe.getRecipeSize() < par1IRecipe.getRecipeSize() ? -1 : (par2IRecipe.getRecipeSize() > par1IRecipe.getRecipeSize() ? 1 : 0)));
+        return par1IRecipe instanceof PolluShapelessRecipes && par2IRecipe instanceof PolluShapedRecipes ? 1 : (par2IRecipe instanceof PolluShapelessRecipes && par1IRecipe instanceof PolluShapedRecipes ? -1 : (par2IRecipe.getRecipeSize() < par1IRecipe.getRecipeSize() ? -1 : (par2IRecipe.getRecipeSize() > par1IRecipe.getRecipeSize() ? 1 : 0)));
     }
 
     public int compare(Object par1Obj, Object par2Obj) {

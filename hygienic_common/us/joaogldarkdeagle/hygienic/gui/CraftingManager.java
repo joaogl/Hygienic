@@ -27,8 +27,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
 
@@ -44,13 +42,13 @@ public class CraftingManager {
 
     private CraftingManager() {
         recipes = new ArrayList();
-        this.func_92051_a(new ItemStack(Hygienic.instance.mop, 1), new Object[] { " SS ", " SSW", "WWWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
+        this.func_92051_a(new ItemStack(Hygienic.instance.mop, 1), new Object[] { " SS ", " SS ", " SS ", "WWWW", Character.valueOf('S'), Item.stick, Character.valueOf('W'), Item.silk });
 
         Collections.sort(this.recipes, new RecipeSorter(this));
         System.out.println(this.recipes.size() + " recipes");
     }
 
-    public ShapedRecipes func_92051_a(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
+    public PolluShapedRecipes func_92051_a(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
         String var3 = "";
         int var4 = 0;
         int var5 = 0;
@@ -58,7 +56,6 @@ public class CraftingManager {
 
         if (par2ArrayOfObj[var4] instanceof String[]) {
             String[] var7 = (String[]) ((String[]) par2ArrayOfObj[var4++]);
-
             for (int var8 = 0; var8 < var7.length; ++var8) {
                 String var9 = var7[var8];
                 ++var6;
@@ -75,15 +72,12 @@ public class CraftingManager {
         }
 
         HashMap var12;
-
         for (var12 = new HashMap(); var4 < par2ArrayOfObj.length; var4 += 2) {
             Character var13 = (Character) par2ArrayOfObj[var4];
             ItemStack var14 = null;
-
             if (par2ArrayOfObj[var4 + 1] instanceof Item) var14 = new ItemStack((Item) par2ArrayOfObj[var4 + 1]);
             else if (par2ArrayOfObj[var4 + 1] instanceof Block) var14 = new ItemStack((Block) par2ArrayOfObj[var4 + 1], 1, -1);
             else if (par2ArrayOfObj[var4 + 1] instanceof ItemStack) var14 = (ItemStack) par2ArrayOfObj[var4 + 1];
-
             var12.put(var13, var14);
         }
 
@@ -91,25 +85,22 @@ public class CraftingManager {
 
         for (int var16 = 0; var16 < var5 * var6; ++var16) {
             char var10 = var3.charAt(var16);
-
             if (var12.containsKey(Character.valueOf(var10))) var15[var16] = ((ItemStack) var12.get(Character.valueOf(var10))).copy();
             else var15[var16] = null;
-
         }
 
-        ShapedRecipes var17 = new ShapedRecipes(var5, var6, var15, par1ItemStack);
+        PolluShapedRecipes var17 = new PolluShapedRecipes(var5, var6, var15, par1ItemStack);
         this.recipes.add(var17);
         return var17;
     }
 
-    public void addShapelessRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
+    public void addBuilderShapelessRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
         ArrayList var3 = new ArrayList();
         Object[] var4 = par2ArrayOfObj;
         int var5 = par2ArrayOfObj.length;
 
         for (int var6 = 0; var6 < var5; ++var6) {
             Object var7 = var4[var6];
-
             if (var7 instanceof ItemStack) var3.add(((ItemStack) var7).copy());
             else if (var7 instanceof Item) var3.add(new ItemStack((Item) var7));
             else {
@@ -117,7 +108,7 @@ public class CraftingManager {
                 var3.add(new ItemStack((Block) var7));
             }
         }
-        this.recipes.add(new ShapelessRecipes(par1ItemStack, var3));
+        this.recipes.add(new PolluShapelessRecipes(par1ItemStack, var3));
     }
 
     public ItemStack findMatchingRecipe(InventoryCrafting par1InventoryCrafting, World par2World) {
@@ -141,9 +132,7 @@ public class CraftingManager {
             int var8 = var11.getMaxDamage() - var5.getItemDamageForDisplay();
             int var9 = var13 + var8 + var11.getMaxDamage() * 5 / 100;
             int var10 = var11.getMaxDamage() - var9;
-
             if (var10 < 0) var10 = 0;
-
             return new ItemStack(var4.itemID, 1, var10);
         } else {
             for (var6 = 0; var6 < this.recipes.size(); ++var6) {

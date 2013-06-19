@@ -19,13 +19,17 @@ package us.joaogldarkdeagle.hygienic;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ServerCommandManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.oredict.OreDictionary;
 import us.joaogldarkdeagle.hygienic.block.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.block.BlockPollution;
+import us.joaogldarkdeagle.hygienic.commands.DebugCommand;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
 import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
 import us.joaogldarkdeagle.hygienic.item.ItemLye;
@@ -41,10 +45,12 @@ import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.Mod.ServerStarting;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -72,6 +78,14 @@ public class Hygienic {
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
 
+    }
+
+    @ServerStarting
+    public void serverStart(FMLServerStartingEvent event) {
+        MinecraftServer server = MinecraftServer.getServer();
+        ICommandManager command = server.getCommandManager();
+        ServerCommandManager serverCommand = ((ServerCommandManager) command);
+        serverCommand.registerCommand(new DebugCommand());
     }
 
     @Init

@@ -28,11 +28,13 @@ import us.joaogldarkdeagle.hygienic.block.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.block.BlockPollution;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
 import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
+import us.joaogldarkdeagle.hygienic.item.ItemLye;
 import us.joaogldarkdeagle.hygienic.item.ItemMop;
 import us.joaogldarkdeagle.hygienic.item.ItemRubber;
 import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.ItemInfo;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+import us.joaogldarkdeagle.hygienic.lib.Textures;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -61,6 +63,7 @@ public class Hygienic {
     public Block blockPollution;
     public Block blockPolluCraft;
     public Item itemMop;
+    public Item itemLye;
     public Item itemRubber;
 
     @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
@@ -85,10 +88,13 @@ public class Hygienic {
         itemMop = (new ItemMop(ItemInfo.ITEM_MOP_ID, EnumToolMaterial.IRON));
         LanguageRegistry.addName(itemMop, "Mop");
 
+        itemLye = (new ItemLye(ItemInfo.ITEM_LYE_ID));
+        LanguageRegistry.addName(itemLye, "Lye");
+
         itemRubber = (new ItemRubber(ItemInfo.ITEM_RUBBER_ID));
         LanguageRegistry.addName(itemRubber, "Rubber");
         OreDictionary.registerOre("itemRubber", itemRubber);
-        
+
         LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 
         NetworkRegistry.instance().registerGuiHandler(this, guiHandler);

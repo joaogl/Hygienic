@@ -21,7 +21,10 @@ public class ItemInfo {
     
     public static final int ITEM_MOP_ID = 902;
     public static final String ITEM_MOP_UNLOCALIZEDNAME = ModInfo.MOD_ID + "_itemMop";
-    
+
     public static final int ITEM_RUBBER_ID = 903;
     public static final String ITEM_RUBBER_UNLOCALIZEDNAME = ModInfo.MOD_ID + "_itemRubber";
+    
+    public static final int ITEM_LYE_ID = 904;
+    public static final String ITEM_LYE_UNLOCALIZEDNAME = ModInfo.MOD_ID + "_itemLye";
 }

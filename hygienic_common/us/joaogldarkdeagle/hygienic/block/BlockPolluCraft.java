@@ -33,6 +33,7 @@ import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
 import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
+import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -52,7 +53,7 @@ public class BlockPolluCraft extends Block {
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
         this.setUnlocalizedName(BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
     }
-    
+
     public int idDropped(int par1, Random par2Random, int par3) {
         return BlockInfo.BLOCK_POLLUCRAFT_ID;
     }
@@ -61,26 +62,24 @@ public class BlockPolluCraft extends Block {
         return 1;
     }
 
-    @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-        if (par5 == 1 || par5 == 0) return this.iconTopBot;
+    public Icon getIcon(int par1, int par2) {
+        if (par1 == 1 || par1 == 0) return this.iconTopBot;
         else {
-            int par6 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
-            if (par5 == 2) {
-                if (par6 == 2) return this.iconFront;
-                else if (par6 == 3) return this.iconBack;
+            if (par1 == 2) {
+                if (par2 == 2) return this.iconFront;
+                else if (par2 == 3) return this.iconBack;
                 else return this.blockIcon;
-            } else if (par5 == 3) {
-                if (par6 == 3) return this.iconFront;
-                else if (par6 == 2) return this.iconBack;
+            } else if (par1 == 3) {
+                if (par2 == 3) return this.iconFront;
+                else if (par2 == 2) return this.iconBack;
                 else return this.blockIcon;
-            } else if (par5 == 4) {
-                if (par6 == 4) return this.iconFront;
-                else if (par6 == 5) return this.iconBack;
+            } else if (par1 == 4) {
+                if (par2 == 4) return this.iconFront;
+                else if (par2 == 5) return this.iconBack;
                 else return this.blockIcon;
-            } else if (par5 == 5) {
-                if (par6 == 5) return this.iconFront;
-                else if (par6 == 4) return this.iconBack;
+            } else if (par1 == 5) {
+                if (par2 == 5) return this.iconFront;
+                else if (par2 == 4) return this.iconBack;
                 else return this.blockIcon;
             }
         }

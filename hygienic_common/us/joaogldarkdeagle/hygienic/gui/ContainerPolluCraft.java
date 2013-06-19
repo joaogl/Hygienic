@@ -42,7 +42,7 @@ public class ContainerPolluCraft extends Container {
         this.posY = par4;
         this.posZ = par5;
 
-        this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 121, 34));
+        this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 135, 34));
         int var6;
         int var7;
 

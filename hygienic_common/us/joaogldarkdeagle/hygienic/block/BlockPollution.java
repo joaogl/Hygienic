@@ -38,7 +38,7 @@ public class BlockPollution extends Block {
 
     public BlockPollution(int par1, Material par2Material) {
         super(par1, par2Material);
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0005F, 1.0F);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0035F, 1.0F);
         this.setHardness(1F);
         this.setStepSound(Block.soundSnowFootstep);
         this.setCreativeTab(Hygienic.hygienicCreativeTab);

@@ -60,12 +60,14 @@ public class ContainerPolluCraft extends Container {
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
+    @Override
     public void onCraftMatrixChanged(IInventory par1IInventory) {
         this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
 
-    public void onCraftGuiClosed(EntityPlayer par1EntityPlayer) {
-        super.onCraftGuiClosed(par1EntityPlayer);
+    @Override
+    public void onContainerClosed(EntityPlayer par1EntityPlayer) {
+        super.onContainerClosed(par1EntityPlayer);
 
         if (!this.worldObj.isRemote) {
             for (int var2 = 0; var2 < 16; ++var2) {
@@ -75,10 +77,12 @@ public class ContainerPolluCraft extends Container {
         }
     }
 
+    @Override
     public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
         return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != BlockInfo.BLOCK_POLLUCRAFT_ID ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
     }
 
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
         ItemStack var3 = null;
         Slot var4 = (Slot) this.inventorySlots.get(par2);

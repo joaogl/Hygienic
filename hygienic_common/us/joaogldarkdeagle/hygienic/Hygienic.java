@@ -38,14 +38,10 @@ import us.joaogldarkdeagle.hygienic.item.ItemRubber;
 import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.ItemInfo;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
-import us.joaogldarkdeagle.hygienic.lib.Textures;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
-import cpw.mods.fml.common.Mod.ServerStarting;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -75,12 +71,12 @@ public class Hygienic {
     @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
     public static CommonProxy proxy;
 
-    @PreInit
+    @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
     }
 
-    @ServerStarting
+    @EventHandler
     public void serverStart(FMLServerStartingEvent event) {
         MinecraftServer server = MinecraftServer.getServer();
         ICommandManager command = server.getCommandManager();
@@ -88,7 +84,7 @@ public class Hygienic {
         serverCommand.registerCommand(new DebugCommand());
     }
 
-    @Init
+    @EventHandler
     public void init(FMLInitializationEvent event) {
         blockPollution = new BlockPollution(BlockInfo.BLOCK_POLLUTION_ID, Material.snow);
         GameRegistry.registerBlock(blockPollution, BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
@@ -114,7 +110,7 @@ public class Hygienic {
         NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
     }
 
-    @PostInit
+    @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
     }

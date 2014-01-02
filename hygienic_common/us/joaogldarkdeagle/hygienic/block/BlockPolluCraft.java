@@ -28,12 +28,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
 import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
-import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -113,7 +111,7 @@ public class BlockPolluCraft extends Block {
         if (l == 1) par1World.setBlockMetadataWithNotify(par2, par3, par4, 5, 2);
         if (l == 2) par1World.setBlockMetadataWithNotify(par2, par3, par4, 3, 2);
         if (l == 3) par1World.setBlockMetadataWithNotify(par2, par3, par4, 4, 2);
-        if (par6ItemStack.hasDisplayName()) ((TileEntityFurnace) par1World.getBlockTileEntity(par2, par3, par4)).func_94129_a(par6ItemStack.getDisplayName());
+        if (par6ItemStack.hasDisplayName()) ((TileEntityFurnace) par1World.getBlockTileEntity(par2, par3, par4)).setGuiDisplayName(par6ItemStack.getDisplayName());
     }
 
     @SideOnly(Side.CLIENT)

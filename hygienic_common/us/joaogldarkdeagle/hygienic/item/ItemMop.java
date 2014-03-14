@@ -17,10 +17,11 @@
 
 package us.joaogldarkdeagle.hygienic.item;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import us.joaogldarkdeagle.hygienic.Hygienic;
@@ -30,10 +31,16 @@ import us.joaogldarkdeagle.hygienic.lib.Textures;
 
 public class ItemMop extends ItemTool {
     private String texture;
-    private final EnumToolMaterial toolMaterial;
-    public static final Block[] blocksEffectiveAgainst = new Block[] { Hygienic.instance.blockPollution };
+    private final ToolMaterial toolMaterial;
+    public static final Set blocksEffectiveAgainst;
 
-    public ItemMop(int par1, EnumToolMaterial par2EnumToolMaterial) {
+    static {
+    	blocksEffectiveAgainst = new HashSet<Block>();
+    	
+    	blocksEffectiveAgainst.add(Hygienic.instance.blockPollution);
+    }
+    
+    public ItemMop(int par1, ToolMaterial par2EnumToolMaterial) {
         super(par1, 2, par2EnumToolMaterial, blocksEffectiveAgainst);
         this.texture = Textures.ITEM_MOP;
         this.toolMaterial = par2EnumToolMaterial;

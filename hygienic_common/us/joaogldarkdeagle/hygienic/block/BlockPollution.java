@@ -23,6 +23,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -67,9 +68,10 @@ public class BlockPollution extends Block {
 	}
 
 	@Override
-	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z) {
-		if (canHarvestBlock(player, world.getBlockMetadata(x, y, z))) return world.setBlockToAir(x, y, z);
-		else return false;
+	public void onBlockDestroyedByPlayer(World world, int par1, int par2, int par3, int par4) {
+		// if (canHarvestBlock(player, world.getBlockMetadata(x, y, z))) return
+		// world.setBlockToAir(x, y, z);
+		// else return false;
 	}
 
 	@Override
@@ -79,20 +81,17 @@ public class BlockPollution extends Block {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
-		int blockX;
-		int blockY;
-		int blockZ;
-		if (world.getBlockId(x, (y - 1), z) == 0) world.setBlockToAir(x, y, z);
-		blockX = x;
-		blockY = y + 1;
-		blockZ = z;
-		int blockAboveId = world.getBlockId(blockX, blockY, blockZ);
-		if (blockAboveId != 0) {
-			if (blockAboveId == Block.waterMoving.blockID || blockAboveId == Block.waterStill.blockID) return;
-
-			world.destroyBlock(blockX, blockY, blockZ, true);
-		}
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+		/*
+		 * int blockX; int blockY; int blockZ; if (world.getBlockId(x, (y - 1),
+		 * z) == 0) world.setBlockToAir(x, y, z); blockX = x; blockY = y + 1;
+		 * blockZ = z; int blockAboveId = world.getBlockId(blockX, blockY,
+		 * blockZ); if (blockAboveId != 0) { if (blockAboveId ==
+		 * Block.waterMoving.blockID || blockAboveId ==
+		 * Block.waterStill.blockID) return;
+		 * 
+		 * world.destroyBlock(blockX, blockY, blockZ, true); }
+		 */
 	}
 
 	@Override
@@ -102,15 +101,9 @@ public class BlockPollution extends Block {
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
-		if (ModInfo.debugging) return 905;
-		else return 0;
-	}
-
-	@Override
-	public int quantityDropped(Random par1Random) {
-		if (ModInfo.debugging) return 1;
-		else return 0;
+	public Item getItemDropped(int par1, Random par2, int par3) {
+		if (ModInfo.debugging) return Item.getItemFromBlock(this);
+		else return null;
 	}
 
 	@Override
@@ -120,7 +113,7 @@ public class BlockPollution extends Block {
 	}
 
 	@Override
-	public int quantityDropped(int meta, int fortune, Random random) {
+	public int quantityDropped(Random par1Random) {
 		if (ModInfo.debugging) return 1;
 		else return 0;
 	}

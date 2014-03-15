@@ -1,10 +1,12 @@
 package us.joaogldarkdeagle.hygienic.util;
 
-import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.ChatComponentStyle;
+import net.minecraft.util.ChatComponentText;
 
 public class Util {
-    
-    public static ChatMessageComponent buildChatMessageComponent(String text) {
-        return ChatMessageComponent.createFromJson("{ text: '" + text + "' }");
-    }
+
+	/*
+	public static ChatComponentStyle buildChatMessageComponent(String text) {
+		return ChatComponent.createFromJson("{ text: '" + text + "' }");
+	}*/
 }

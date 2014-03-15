@@ -50,65 +50,64 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = true)
 public class Hygienic {
 
-    @Instance(ModInfo.MOD_ID)
-    public static Hygienic instance;
+	@Instance(ModInfo.MOD_ID)
+	public static Hygienic instance;
 
-    private GuiHandler guiHandler = new GuiHandler();
+	private GuiHandler guiHandler = new GuiHandler();
 
-    public static CreativeTabs hygienicCreativeTab = new CreativeTabHygienic();
-    public Block blockPollution;
-    public Block blockPolluCraft;
-    public Item itemMop;
-    public Item itemLye;
-    public Item itemRubber;
+	public static CreativeTabs hygienicCreativeTab = new CreativeTabHygienic();
+	public Block blockPollution;
+	public Block blockPolluCraft;
+	public Item itemMop;
+	public Item itemLye;
+	public Item itemRubber;
 
-    @SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
-    public static CommonProxy proxy;
+	@SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.net.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.net.CommonProxy")
+	public static CommonProxy proxy;
 
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
 
-    }
+	}
 
-    @EventHandler
-    public void serverStart(FMLServerStartingEvent event) {
-        MinecraftServer server = MinecraftServer.getServer();
-        ICommandManager command = server.getCommandManager();
-        ServerCommandManager serverCommand = ((ServerCommandManager) command);
-        serverCommand.registerCommand(new DebugCommand());
-    }
+	@EventHandler
+	public void serverStart(FMLServerStartingEvent event) {
+		MinecraftServer server = MinecraftServer.getServer();
+		ICommandManager command = server.getCommandManager();
+		ServerCommandManager serverCommand = ((ServerCommandManager) command);
+		serverCommand.registerCommand(new DebugCommand());
+	}
 
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        blockPollution = new BlockPollution(BlockInfo.BLOCK_POLLUTION_ID, Material.snow);
-        GameRegistry.registerBlock(blockPollution, BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
-        LanguageRegistry.addName(blockPollution, "Pollution");
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		blockPollution = new BlockPollution(Material.snow);
+		GameRegistry.registerBlock(blockPollution, BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
+		LanguageRegistry.addName(blockPollution, "Pollution");
 
-        blockPolluCraft = new BlockPolluCraft(BlockInfo.BLOCK_POLLUCRAFT_ID, Material.iron);
-        GameRegistry.registerBlock(blockPolluCraft, BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
-        LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
-        GameRegistry.addRecipe(new ItemStack(blockPolluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
+		blockPolluCraft = new BlockPolluCraft(Material.iron);
+		GameRegistry.registerBlock(blockPolluCraft, BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
+		LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
+		GameRegistry.addRecipe(new ItemStack(blockPolluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
 
-        itemMop = (new ItemMop(ItemInfo.ITEM_MOP_ID, EnumToolMaterial.IRON));
-        LanguageRegistry.addName(itemMop, "Mop");
+		itemMop = (new ItemMop(ItemInfo.ITEM_MOP_ID, EnumToolMaterial.IRON));
+		LanguageRegistry.addName(itemMop, "Mop");
 
-        itemLye = (new ItemLye(ItemInfo.ITEM_LYE_ID));
-        LanguageRegistry.addName(itemLye, "Lye");
+		itemLye = (new ItemLye(ItemInfo.ITEM_LYE_ID));
+		LanguageRegistry.addName(itemLye, "Lye");
 
-        itemRubber = (new ItemRubber(ItemInfo.ITEM_RUBBER_ID));
-        LanguageRegistry.addName(itemRubber, "Rubber");
-        OreDictionary.registerOre("itemRubber", itemRubber);
+		itemRubber = (new ItemRubber(ItemInfo.ITEM_RUBBER_ID));
+		LanguageRegistry.addName(itemRubber, "Rubber");
+		OreDictionary.registerOre("itemRubber", itemRubber);
 
-        LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
+		LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 
-        NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
-    }
+		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
+	}
 
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
 
-    }
+	}
 }

@@ -28,7 +28,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
@@ -42,9 +41,9 @@ public class BlockPollution extends Block {
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0035F, 1.0F);
 		this.setHardness(1F);
 		this.setStepSound(Block.soundTypeSnow);
+		this.setBlockName("pollution");
 		this.setCreativeTab(Hygienic.hygienicCreativeTab);
 		this.texture = Textures.BLOCK_POLLUTION;
-		this.setBlockName(BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
 	}
 
 	@SideOnly(Side.CLIENT)

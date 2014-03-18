@@ -17,27 +17,28 @@
 
 package us.joaogldarkdeagle.hygienic.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.ItemInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
 
 public class ItemLye extends Item {
     private String texture;
 
-    public ItemLye(int par1) {
-        super(par1);
+    public ItemLye() {
+        super();
         this.texture = Textures.ITEM_LYE;
         this.maxStackSize = 1;
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
-        this.setUnlocalizedName(ItemInfo.ITEM_LYE_UNLOCALIZEDNAME);
+        this.setUnlocalizedName("lye");
     }
-
-    public void registerIcons(IconRegister iconReg) {
+    
+    @Override
+    public void registerIcons(IIconRegister iconReg) {
         this.itemIcon = iconReg.registerIcon(this.texture);
     }
-
+    
+    @Override
     public boolean isFull3D() {
         return true;
     }

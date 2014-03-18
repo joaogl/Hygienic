@@ -18,18 +18,17 @@
 package us.joaogldarkdeagle.hygienic.creativetabs;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 
-public class CreativeTabHygienic extends CreativeTabs{
+public class CreativeTabHygienic extends CreativeTabs {
     
     public CreativeTabHygienic() {
-        super(CreativeTabs.getNextID(), ModInfo.CREATIVETAB_NAME);
+        super(CreativeTabs.getNextID(), "");
     }
 
     @Override
-    public ItemStack getIconItemStack() {
-        return new ItemStack(Hygienic.instance.itemMop);
+    public Item getTabIconItem() {
+        return Hygienic.instance.itemMop;
     }
 }

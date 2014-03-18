@@ -21,17 +21,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
-import us.joaogldarkdeagle.hygienic.lib.ItemInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
 
+@SuppressWarnings("unchecked")
 public class ItemMop extends ItemTool {
     private String texture;
-    private final ToolMaterial toolMaterial;
+    @SuppressWarnings("rawtypes")
     public static final Set blocksEffectiveAgainst;
 
     static {
@@ -40,35 +42,44 @@ public class ItemMop extends ItemTool {
     	blocksEffectiveAgainst.add(Hygienic.instance.blockPollution);
     }
     
-    public ItemMop(int par1, ToolMaterial par2EnumToolMaterial) {
-        super(par1, 2, par2EnumToolMaterial, blocksEffectiveAgainst);
+    public ItemMop() {
+        super(0, ToolMaterial.STONE, blocksEffectiveAgainst);
         this.texture = Textures.ITEM_MOP;
-        this.toolMaterial = par2EnumToolMaterial;
         this.maxStackSize = 1;
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
-        this.setUnlocalizedName(ItemInfo.ITEM_MOP_UNLOCALIZEDNAME);
+        this.setUnlocalizedName("mop");
     }
-
-    public void registerIcons(IconRegister iconReg) {
+    
+    @Override
+    public void registerIcons(IIconRegister iconReg) {
         this.itemIcon = iconReg.registerIcon(this.texture);
     }
 
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-        return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
-    }
-
+    //No longer needed, minecraft does this by default
+    /*public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
+        return this.toolMaterial.func_150995_f() == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    } // */
+    
+    @Override
     public int getMaxItemUseDuration(ItemStack par1ItemStack) {
         return 72000;
     }
-
-    public boolean canHarvestBlock(Block par1Block) {
-        return par1Block.blockID == BlockInfo.BLOCK_POLLUTION_ID;
+    
+    @Override
+    public boolean onBlockDestroyed(ItemStack item, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
+        if(block == Hygienic.instance.blockPollution) {
+            item.damageItem(1, entityLivingBase);
+        }
+            
+        return false;
     }
 
+    @Override
     public EnumAction getItemUseAction(ItemStack par1ItemStack) {
         return EnumAction.block;
     }
-
+    
+    @Override
     public boolean isFull3D() {
         return true;
     }

@@ -25,16 +25,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.oredict.OreDictionary;
 import us.joaogldarkdeagle.hygienic.block.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.block.BlockPollution;
-import us.joaogldarkdeagle.hygienic.commands.DebugCommand;
+import us.joaogldarkdeagle.hygienic.commands.HygienicCommand;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
 import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
 import us.joaogldarkdeagle.hygienic.item.ItemLye;
 import us.joaogldarkdeagle.hygienic.item.ItemMop;
 import us.joaogldarkdeagle.hygienic.item.ItemRubber;
-import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
-import us.joaogldarkdeagle.hygienic.lib.ItemInfo;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.net.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -47,7 +46,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
 public class Hygienic {
@@ -77,33 +75,36 @@ public class Hygienic {
 		MinecraftServer server = MinecraftServer.getServer();
 		ICommandManager command = server.getCommandManager();
 		ServerCommandManager serverCommand = ((ServerCommandManager) command);
-		serverCommand.registerCommand(new DebugCommand());
+		serverCommand.registerCommand(new HygienicCommand());
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		blockPollution = new BlockPollution(Material.snow);
-		GameRegistry.registerBlock(blockPollution, BlockInfo.BLOCK_POLLUTION_UNLOCALIZEDNAME);
-		LanguageRegistry.addName(blockPollution, "Pollution");
+		GameRegistry.registerBlock(blockPollution, "pollution");
+		//LanguageRegistry.addName(blockPollution, "Pollution");
 
 		blockPolluCraft = new BlockPolluCraft(Material.iron);
-		GameRegistry.registerBlock(blockPolluCraft, BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
-		LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
-		GameRegistry.addRecipe(new ItemStack(blockPolluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.ingotIron });
+		GameRegistry.registerBlock(blockPolluCraft, "pollucraft");
+		//LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
+		GameRegistry.addRecipe(new ItemStack(blockPolluCraft, 1), new Object[] { "   ", " XX", " XX", Character.valueOf('X'), Item.itemRegistry.getObject("iron_ingot") });
 
-		itemMop = (new ItemMop(ItemInfo.ITEM_MOP_ID, EnumToolMaterial.IRON));
-		LanguageRegistry.addName(itemMop, "Mop");
+		itemMop = (new ItemMop());
+		GameRegistry.registerItem(itemMop, "mop");
+		//LanguageRegistry.addName(itemMop, "Mop");
 
-		itemLye = (new ItemLye(ItemInfo.ITEM_LYE_ID));
-		LanguageRegistry.addName(itemLye, "Lye");
+		itemLye = (new ItemLye()); //TODO: Make this a fluid?
+		GameRegistry.registerItem(itemLye, "lye");
+		//LanguageRegistry.addName(itemLye, "Lye");
 
-		itemRubber = (new ItemRubber(ItemInfo.ITEM_RUBBER_ID));
-		LanguageRegistry.addName(itemRubber, "Rubber");
+		itemRubber = (new ItemRubber());
+		GameRegistry.registerItem(itemRubber, "rubber");
+		//LanguageRegistry.addName(itemRubber, "Rubber");
 		OreDictionary.registerOre("itemRubber", itemRubber);
 
-		LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
+		//LanguageRegistry.instance().addStringLocalization("itemGroup.Hygienic", "en_US", "Hygienic");
 
-		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
 	}
 
 	@EventHandler

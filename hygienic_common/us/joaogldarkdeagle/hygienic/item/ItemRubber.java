@@ -17,7 +17,7 @@
 
 package us.joaogldarkdeagle.hygienic.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import us.joaogldarkdeagle.hygienic.Hygienic;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
@@ -26,15 +26,16 @@ public class ItemRubber extends Item {
 
     private String texture;
 
-    public ItemRubber(int par1) {
-        super(par1);
+    public ItemRubber() {
+        super();
         this.setCreativeTab(Hygienic.hygienicCreativeTab);
         this.texture = Textures.ITEM_RUBBER;
         this.maxStackSize = 64;
-        this.setUnlocalizedName("hygienicRubber");
+        this.setUnlocalizedName("rubber");
     }
-
-    public void registerIcons(IconRegister iconReg) {
+    
+    @Override
+    public void registerIcons(IIconRegister iconReg) {
         this.itemIcon = iconReg.registerIcon(this.texture);
     }
 }

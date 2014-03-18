@@ -30,7 +30,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
-import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -49,7 +48,7 @@ public class BlockPolluCraft extends Block {
 		this.setHardness(2F);
 		this.setStepSound(Block.soundTypeMetal);
 		this.setCreativeTab(Hygienic.hygienicCreativeTab);
-		this.setBlockName(BlockInfo.BLOCK_POLLUCRAFT_UNLOCALIZEDNAME);
+		this.setBlockName("pollucraft");
 	}
 
 	@Override

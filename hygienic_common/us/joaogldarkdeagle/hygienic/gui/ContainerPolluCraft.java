@@ -17,6 +17,7 @@
 
 package us.joaogldarkdeagle.hygienic.gui;
 
+import us.joaogldarkdeagle.hygienic.Hygienic;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -26,7 +27,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import us.joaogldarkdeagle.hygienic.lib.BlockInfo;
 
 public class ContainerPolluCraft extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
@@ -72,14 +72,14 @@ public class ContainerPolluCraft extends Container {
         if (!this.worldObj.isRemote) {
             for (int var2 = 0; var2 < 16; ++var2) {
                 ItemStack var3 = this.craftMatrix.getStackInSlotOnClosing(var2);
-                if (var3 != null) par1EntityPlayer.dropPlayerItem(var3);
+                if (var3 != null) par1EntityPlayer.dropPlayerItemWithRandomChoice(var3, false);
             }
         }
     }
 
     @Override
     public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != BlockInfo.BLOCK_POLLUCRAFT_ID ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Hygienic.instance.blockPolluCraft ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
     }
 
     @Override

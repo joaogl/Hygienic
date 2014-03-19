@@ -23,7 +23,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class SlotPolluCraft extends Slot {
     private final IInventory craftMatrix;

@@ -43,8 +43,8 @@ public class GuiPolluCraft extends GuiContainer {
     
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        this.fontRenderer.drawString(StatCollector.translateToLocal("container.crafting"), 10, -6, 4210752);
-        this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 10, 85, 4210752);
+        this.fontRendererObj.drawString(StatCollector.translateToLocal("container.crafting"), 10, -6, 4210752);
+        this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 10, 85, 4210752);
     }
 
     @Override

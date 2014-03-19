@@ -18,6 +18,7 @@
 package us.joaogldarkdeagle.hygienic.gui;
 
 import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,11 +32,11 @@ public class PolluShapedRecipes implements IRecipe {
 
     private ItemStack recipeOutput;
 
-    public final int recipeOutputItemID;
+    public final Item recipeOutputItem;
     private boolean field_92101_f = false;
 
     public PolluShapedRecipes(int par1, int par2, ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack) {
-        this.recipeOutputItemID = par4ItemStack.itemID;
+        this.recipeOutputItem = par4ItemStack.getItem();
         this.recipeWidth = par1;
         this.recipeHeight = par2;
         this.recipeItems = par3ArrayOfItemStack;
@@ -72,7 +73,7 @@ public class PolluShapedRecipes implements IRecipe {
 
                 if (itemstack1 != null || itemstack != null) {
                     if (itemstack1 == null && itemstack != null || itemstack1 != null && itemstack == null) return false;
-                    if (itemstack.itemID != itemstack1.itemID) return false;
+                    if (itemstack.getItem() != itemstack1.getItem()) return false;
                     if (itemstack.getItemDamage() != 32767 && itemstack.getItemDamage() != itemstack1.getItemDamage()) return false;
                 }
             }

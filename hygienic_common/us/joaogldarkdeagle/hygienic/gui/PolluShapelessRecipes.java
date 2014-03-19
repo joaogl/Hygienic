@@ -53,7 +53,7 @@ public class PolluShapelessRecipes implements IRecipe {
 
                     while (iterator.hasNext()) {
                         ItemStack itemstack1 = (ItemStack) iterator.next();
-                        if (itemstack.itemID == itemstack1.itemID && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage())) {
+                        if (itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage())) {
                             flag = true;
                             arraylist.remove(itemstack1);
                             break;

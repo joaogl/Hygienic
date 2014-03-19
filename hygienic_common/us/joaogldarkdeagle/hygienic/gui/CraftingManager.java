@@ -127,14 +127,14 @@ public class CraftingManager {
             }
         }
 
-        if (var3 == 2 && var4.itemID == var5.itemID && var4.stackSize == 1 && var5.stackSize == 1 && Item.itemsList[var4.itemID].isRepairable()) {
-            Item var11 = Item.itemsList[var4.itemID];
+        if (var3 == 2 && var4.getItem() == var5.getItem() && var4.stackSize == 1 && var5.stackSize == 1 && var4.getItem().isRepairable()) {
+            Item var11 = var4.getItem();
             int var13 = var11.getMaxDamage() - var4.getItemDamageForDisplay();
             int var8 = var11.getMaxDamage() - var5.getItemDamageForDisplay();
             int var9 = var13 + var8 + var11.getMaxDamage() * 5 / 100;
             int var10 = var11.getMaxDamage() - var9;
             if (var10 < 0) var10 = 0;
-            return new ItemStack(var4.itemID, 1, var10);
+            return new ItemStack(var4.getItem(), 1, var10);
         } else {
             for (var6 = 0; var6 < this.recipes.size(); ++var6) {
                 IRecipe var12 = (IRecipe) this.recipes.get(var6);

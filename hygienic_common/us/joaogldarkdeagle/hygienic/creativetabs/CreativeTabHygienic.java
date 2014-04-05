@@ -17,18 +17,19 @@
 
 package us.joaogldarkdeagle.hygienic.creativetabs;
 
+import us.joaogldarkdeagle.hygienic.lib.Textures;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import us.joaogldarkdeagle.hygienic.Hygienic;
 
 public class CreativeTabHygienic extends CreativeTabs {
-    
-    public CreativeTabHygienic() {
-        super(CreativeTabs.getNextID(), "");
-    }
 
-    @Override
-    public Item getTabIconItem() {
-        return Hygienic.instance.itemMop;
-    }
+	public CreativeTabHygienic() {
+		super(CreativeTabs.getNextID(), "Hygienic");
+	}
+
+	@Override
+	public Item getTabIconItem() {
+		// return Hygienic.instance.itemMop;
+		return new Item();
+	}
 }

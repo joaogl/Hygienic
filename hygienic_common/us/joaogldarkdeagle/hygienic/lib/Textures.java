@@ -19,14 +19,14 @@ package us.joaogldarkdeagle.hygienic.lib;
 
 public class Textures {
 
-    public static final String ITEM_MOP = "Hygienic:Mop";
-    public static final String ITEM_LYE = "Hygienic:Lye";
-    public static final String ITEM_RUBBER = "Hygienic:Rubber";
+    public static final String ITEM_MOP = "hygienic:Mop";
+    public static final String ITEM_LYE = "hygienic:Lye";
+    public static final String ITEM_RUBBER = "hygienic:Rubber";
 
-    public static final String BLOCK_POLLUTION = "Hygienic:Pollu";
-    public static final String BLOCK_POLLUCRAFT_TOPBOT = "Hygienic:PolluCraftTopBot";
-    public static final String BLOCK_POLLUCRAFT_SIDES = "Hygienic:PolluCraftSides";
-    public static final String BLOCK_POLLUCRAFT_FRONT = "Hygienic:PolluCraftFront";
-    public static final String BLOCK_POLLUCRAFT_BACK = "Hygienic:PolluCraftBack";
+    public static final String BLOCK_POLLUTION = "hygienic:Pollu";
+    public static final String BLOCK_POLLUCRAFT_TOPBOT = "hygienic:PolluCraftTopBot";
+    public static final String BLOCK_POLLUCRAFT_SIDES = "hygienic:PolluCraftSides";
+    public static final String BLOCK_POLLUCRAFT_FRONT = "hygienic:PolluCraftFront";
+    public static final String BLOCK_POLLUCRAFT_BACK = "hygienic:PolluCraftBack";
 
 }

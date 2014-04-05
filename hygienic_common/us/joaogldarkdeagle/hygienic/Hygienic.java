@@ -18,12 +18,17 @@
 package us.joaogldarkdeagle.hygienic;
 
 import net.minecraft.block.Block;
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ServerCommandManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.oredict.OreDictionary;
+import us.joaogldarkdeagle.hygienic.blocks.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.blocks.BlockPollution;
+import us.joaogldarkdeagle.hygienic.commands.HygienicCommand;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
 import us.joaogldarkdeagle.hygienic.items.ItemMop;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
@@ -33,6 +38,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -54,13 +60,18 @@ public class Hygienic {
 
 	// Blocks
 	public static final Block blockPollution = new BlockPollution();
+	public static final Block blockPolluCraft = new BlockPolluCraft();
 
 	// Items
 	public static final Item itemMop = new ItemMop();
 
-	// Recipes
-
-	// Smeltings
+	@EventHandler
+	public void serverStart(FMLServerStartingEvent event) {
+		MinecraftServer server = MinecraftServer.getServer();
+		ICommandManager command = server.getCommandManager();
+		ServerCommandManager serverCommand = ((ServerCommandManager) command);
+		serverCommand.registerCommand(new HygienicCommand());
+	}
 
 	@EventHandler
 	public void init(FMLPreInitializationEvent event) {
@@ -77,6 +88,10 @@ public class Hygienic {
 		LanguageRegistry.addName(blockPollution, "Pollution");
 		GameRegistry.registerBlock(blockPollution, blockPollution.getUnlocalizedName().substring(5));
 		OreDictionary.registerOre("Pollution", blockPollution);
+
+		LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
+		GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5));
+		OreDictionary.registerOre("PolluCraft", blockPolluCraft);
 
 		// Tabs
 		LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod");

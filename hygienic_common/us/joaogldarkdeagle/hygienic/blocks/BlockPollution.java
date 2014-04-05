@@ -61,10 +61,13 @@ public class BlockPollution extends Block {
 	}
 
 	@Override
-	public void onBlockDestroyedByPlayer(World world, int par1, int par2, int par3, int par4) {
-		// if (canHarvestBlock(player, world.getBlockMetadata(x, y, z))) return
-		// world.setBlockToAir(x, y, z);
-		// else return false;
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int par4) {
+		// if (canHarvestBlock(world.getBlockMetadata(x, y, z))) return world.setBlockToAir(x, y, z);
+	}
+
+	@Override
+	public boolean canHarvestBlock(EntityPlayer player, int meta) {
+		return super.canHarvestBlock(player, meta);
 	}
 
 	@Override

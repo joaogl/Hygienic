@@ -85,6 +85,7 @@ public class Hygienic {
 		// Recipes
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.farmland, 1), Blocks.dirt, Items.stone_hoe);
 		GameRegistry.addShapedRecipe(new ItemStack(blockPolluCraft, 1), "   ", " XX", " XX", 'X', Items.iron_ingot);
+		GameRegistry.addShapedRecipe(new ItemStack(itemMop, 1), "  S", "TS ", "TT ", 'S', Items.stick, 'T', Items.string);
 
 		// Smeltings
 		GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian), 1.0F);

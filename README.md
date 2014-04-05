@@ -4,7 +4,7 @@ Hygienic
 
 *TO-DO LIST!* 
 
-- Fix the PolluCraft clicking and crafting crash.
+- Fix the PolluCraft clicking crash.
 - Make the Pollucion block only be destroyable using the mop.
 - Add a MopBucket.
 - Try to find a better recipe to Lye.

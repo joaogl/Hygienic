@@ -29,7 +29,6 @@ public class CreativeTabHygienic extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		// return Hygienic.instance.itemMop;
 		return new Item();
 	}
 }

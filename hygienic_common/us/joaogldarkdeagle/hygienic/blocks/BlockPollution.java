@@ -1,5 +1,23 @@
+/**
+ * This file is part of Hygienic.
+
+    Hygienic is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Hygienic is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package us.joaogldarkdeagle.hygienic.blocks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +32,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IShearable;
 import us.joaogldarkdeagle.hygienic.Hygienic;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.lib.Textures;
@@ -62,7 +81,7 @@ public class BlockPollution extends Block {
 
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int par4) {
-		// if (canHarvestBlock(world.getBlockMetadata(x, y, z))) return world.setBlockToAir(x, y, z);
+		world.setBlock(x, y, z, this);
 	}
 
 	@Override

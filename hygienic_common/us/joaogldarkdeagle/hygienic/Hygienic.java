@@ -20,10 +20,12 @@ package us.joaogldarkdeagle.hygienic;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import us.joaogldarkdeagle.hygienic.blocks.BlockPollution;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
+import us.joaogldarkdeagle.hygienic.items.ItemMop;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -54,6 +56,7 @@ public class Hygienic {
 	public static final Block blockPollution = new BlockPollution();
 
 	// Items
+	public static final Item itemMop = new ItemMop();
 
 	// Recipes
 
@@ -77,6 +80,12 @@ public class Hygienic {
 
 		// Tabs
 		LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod");
+
+		// Items
+		LanguageRegistry.addName(itemMop, "Mop");
+		GameRegistry.registerItem(itemMop, "Mop");
+		OreDictionary.registerOre("Mop", itemMop);
+
 	}
 
 }

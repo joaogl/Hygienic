@@ -8,6 +8,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
+
 public class GuiPolluCraft extends GuiContainer {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation("hygienic", "textures/gui/gui_pollucraft.png");
@@ -33,9 +35,14 @@ public class GuiPolluCraft extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+
 		this.mc.renderEngine.bindTexture(TEXTURE);
+
 		int var5 = (this.width - this.xSize) / 2;
 		int var6 = (this.height - this.ySize) / 2;
+
 		this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
+		ModInfo.ScreenHeight = this.mc.displayHeight;
+		ModInfo.ScreenWidth = this.mc.displayWidth;
 	}
 }

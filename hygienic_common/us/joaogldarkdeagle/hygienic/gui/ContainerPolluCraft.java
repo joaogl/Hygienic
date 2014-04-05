@@ -1,5 +1,6 @@
 package us.joaogldarkdeagle.hygienic.gui;
 
+import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 import us.joaogldarkdeagle.hygienic.Hygienic;
+import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 
 public class ContainerPolluCraft extends Container {
 
@@ -27,13 +29,15 @@ public class ContainerPolluCraft extends Container {
 		this.posY = par4;
 		this.posZ = par5;
 
-		this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 135, 33));
+		int offset2 = ((ModInfo.ScreenHeight * 6) / 480);
+
+		this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 135, 34));
 		int var6;
 		int var7;
 
 		for (var6 = 0; var6 < 4; var6++)
 			for (var7 = 0; var7 < 4; var7++)
-				this.addSlotToContainer(new Slot(this.craftMatrix, var7 + var6 * 4, 8 + var7 * 18, 6 + var6 * 18));
+				this.addSlotToContainer(new Slot(this.craftMatrix, var7 + var6 * 4, 8 + var7 * 18, 7 + var6 * 18));
 
 		for (int i1 = 0; i1 < 3; i1++)
 			for (int l1 = 0; l1 < 9; l1++)
@@ -41,6 +45,8 @@ public class ContainerPolluCraft extends Container {
 
 		for (int j1 = 0; j1 < 9; j1++)
 			this.addSlotToContainer(new Slot(par1InventoryPlayer, j1, 8 + j1 * 18, 157));
+
+		System.out.println(ModInfo.ScreenHeight);
 
 		this.onCraftMatrixChanged(this.craftMatrix);
 	}

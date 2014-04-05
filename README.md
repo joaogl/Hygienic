@@ -4,6 +4,8 @@ Hygienic
 
 *TO-DO LIST!* 
 
+- Fix the slot positions on PolluCraft Gui.
+- Fix the picking bugs on the PolluCraft Gui. 
 - Fix the PolluCraft clicking crash.
 - Make the Pollucion block only be destroyable using the mop.
 - Add a MopBucket.

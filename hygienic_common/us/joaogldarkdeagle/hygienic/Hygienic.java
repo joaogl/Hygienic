@@ -30,6 +30,7 @@ import us.joaogldarkdeagle.hygienic.blocks.BlockPolluCraft;
 import us.joaogldarkdeagle.hygienic.blocks.BlockPollution;
 import us.joaogldarkdeagle.hygienic.commands.HygienicCommand;
 import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
+import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
 import us.joaogldarkdeagle.hygienic.items.ItemMop;
 import us.joaogldarkdeagle.hygienic.lib.ModInfo;
 import us.joaogldarkdeagle.hygienic.proxy.CommonProxy;
@@ -39,6 +40,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -54,6 +56,9 @@ public class Hygienic {
 	/**
 	 * Items / Blocks / Etc's.
 	 */
+
+	// Gui
+	private GuiHandler guiHandler = new GuiHandler();
 
 	// Tabs
 	public static final CreativeTabHygienic hygienicTab = new CreativeTabHygienic();
@@ -101,6 +106,8 @@ public class Hygienic {
 		GameRegistry.registerItem(itemMop, "Mop");
 		OreDictionary.registerOre("Mop", itemMop);
 
+		// Gui
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
 	}
 
 }

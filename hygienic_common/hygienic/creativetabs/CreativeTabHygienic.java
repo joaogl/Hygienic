@@ -15,9 +15,9 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.creativetabs;
+package hygienic.creativetabs;
 
-import us.joaogldarkdeagle.hygienic.lib.Textures;
+import hygienic.lib.Textures;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 

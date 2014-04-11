@@ -15,9 +15,9 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic.proxy;
+package hygienic.proxy;
 
-public class ClientProxy extends CommonProxy {
+public class CommonProxy {
 
 	public void registerRenderInformation() {
 

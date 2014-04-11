@@ -15,8 +15,16 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package us.joaogldarkdeagle.hygienic;
+package hygienic;
 
+import hygienic.blocks.BlockPolluCraft;
+import hygienic.blocks.BlockPollution;
+import hygienic.commands.HygienicCommand;
+import hygienic.creativetabs.CreativeTabHygienic;
+import hygienic.gui.GuiHandler;
+import hygienic.items.ItemMop;
+import hygienic.lib.ModInfo;
+import hygienic.proxy.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
@@ -26,14 +34,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.oredict.OreDictionary;
-import us.joaogldarkdeagle.hygienic.blocks.BlockPolluCraft;
-import us.joaogldarkdeagle.hygienic.blocks.BlockPollution;
-import us.joaogldarkdeagle.hygienic.commands.HygienicCommand;
-import us.joaogldarkdeagle.hygienic.creativetabs.CreativeTabHygienic;
-import us.joaogldarkdeagle.hygienic.gui.GuiHandler;
-import us.joaogldarkdeagle.hygienic.items.ItemMop;
-import us.joaogldarkdeagle.hygienic.lib.ModInfo;
-import us.joaogldarkdeagle.hygienic.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

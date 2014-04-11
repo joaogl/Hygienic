@@ -42,7 +42,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
 public class Hygienic {
@@ -88,22 +87,25 @@ public class Hygienic {
 		GameRegistry.addShapedRecipe(new ItemStack(itemMop, 1), "  S", "TS ", "TT ", 'S', Items.stick, 'T', Items.string);
 
 		// Smeltings
-		GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian), 1.0F);
-
+		//GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian), 1.0F); //??
+		
+		//Language
+		proxy.initLang();
+		
 		// Blocks
-		LanguageRegistry.addName(blockPollution, "Pollution");
+		//LanguageRegistry.addName(blockPollution, "Pollution"); Just add in the language file, for blocks use like this: tile.<block name>.name=<localized block name>
 		GameRegistry.registerBlock(blockPollution, blockPollution.getUnlocalizedName().substring(5));
 		OreDictionary.registerOre("Pollution", blockPollution);
 
-		LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
+		//LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
 		GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5));
 		OreDictionary.registerOre("PolluCraft", blockPolluCraft);
 
 		// Tabs
-		LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod");
+		//LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod"); Lang file, usage: itemGroup.<tab unlocalized name>=<localized name>
 
 		// Items
-		LanguageRegistry.addName(itemMop, "Mop");
+		//LanguageRegistry.addName(itemMop, "Mop"); Lang file. usage for items: item.<unlocalized name>.name=<localized name>
 		GameRegistry.registerItem(itemMop, "Mop");
 		OreDictionary.registerOre("Mop", itemMop);
 

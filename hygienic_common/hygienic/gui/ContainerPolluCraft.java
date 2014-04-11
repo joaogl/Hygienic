@@ -19,7 +19,6 @@ package hygienic.gui;
 
 import hygienic.Hygienic;
 import hygienic.lib.ModInfo;
-import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -46,7 +45,7 @@ public class ContainerPolluCraft extends Container {
 		this.posY = par4;
 		this.posZ = par5;
 
-		int offset2 = ((ModInfo.ScreenHeight * 6) / 480);
+		//int offset2 = ((ModInfo.ScreenHeight * 6) / 480);
 
 		this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 135, 34));
 		int var6;
@@ -87,7 +86,7 @@ public class ContainerPolluCraft extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Hygienic.instance.blockPolluCraft ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+		return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Hygienic.blockPolluCraft ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
 	}
 
 	@Override

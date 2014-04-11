@@ -29,9 +29,9 @@ import net.minecraft.world.World;
 public class PolluShapelessRecipes implements IRecipe {
 
 	private final ItemStack recipeOutput;
-	public final List recipeItems;
+	public final List<?> recipeItems;
 
-	public PolluShapelessRecipes(ItemStack par1ItemStack, List par2List) {
+	public PolluShapelessRecipes(ItemStack par1ItemStack, List<?> par2List) {
 		this.recipeOutput = par1ItemStack;
 		this.recipeItems = par2List;
 	}
@@ -41,7 +41,7 @@ public class PolluShapelessRecipes implements IRecipe {
 	}
 
 	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World) {
-		ArrayList arraylist = new ArrayList(this.recipeItems);
+		ArrayList<?> arraylist = new ArrayList<Object>(this.recipeItems);
 
 		for (int i = 0; i < 4; ++i) {
 			for (int j = 0; j < 4; ++j) {
@@ -49,7 +49,7 @@ public class PolluShapelessRecipes implements IRecipe {
 
 				if (itemstack != null) {
 					boolean flag = false;
-					Iterator iterator = arraylist.iterator();
+					Iterator<?> iterator = arraylist.iterator();
 
 					while (iterator.hasNext()) {
 						ItemStack itemstack1 = (ItemStack) iterator.next();

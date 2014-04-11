@@ -21,7 +21,6 @@ import hygienic.Hygienic;
 import hygienic.lib.ModInfo;
 import hygienic.lib.Textures;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -36,7 +35,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,7 +46,7 @@ public class BlockPollution extends Block {
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0035F, 1.0F);
 		this.setHardness(1F);
 		this.setStepSound(Block.soundTypeSnow);
-		this.setBlockName("Pollution");
+		this.setBlockName("pollution");
 		this.setCreativeTab(Hygienic.hygienicTab);
 		this.texture = Textures.BLOCK_POLLUTION;
 		this.setBlockTextureName(this.texture);
@@ -109,7 +107,7 @@ public class BlockPollution extends Block {
 	}
 
 	@Override
-	public void addCollisionBoxesToList(World p_149743_1_, int p_149743_2_, int p_149743_3_, int p_149743_4_, AxisAlignedBB p_149743_5_, List p_149743_6_, Entity p_149743_7_) {
+	public void addCollisionBoxesToList(World p_149743_1_, int p_149743_2_, int p_149743_3_, int p_149743_4_, AxisAlignedBB p_149743_5_, @SuppressWarnings("rawtypes") List p_149743_6_, Entity p_149743_7_) {
 		// None to make it nonCollidable
 	}
 

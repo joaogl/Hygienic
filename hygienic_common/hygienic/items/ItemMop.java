@@ -31,6 +31,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unchecked")
 public class ItemMop extends ItemTool {
 	private String texture;
 	@SuppressWarnings("rawtypes")
@@ -39,7 +40,7 @@ public class ItemMop extends ItemTool {
 	static {
 		blocksEffectiveAgainst = new HashSet<Block>();
 
-		blocksEffectiveAgainst.add(Hygienic.instance.blockPollution);
+		blocksEffectiveAgainst.add(Hygienic.blockPollution);
 	}
 
 	public ItemMop() {
@@ -62,7 +63,7 @@ public class ItemMop extends ItemTool {
 
 	@Override
 	public boolean onBlockDestroyed(ItemStack item, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
-		if (block == Hygienic.instance.blockPollution) {
+		if (block == Hygienic.blockPollution) {
 			item.damageItem(1, entityLivingBase);
 		}
 		return false;

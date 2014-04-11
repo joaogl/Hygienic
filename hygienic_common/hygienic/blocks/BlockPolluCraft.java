@@ -49,7 +49,7 @@ public class BlockPolluCraft extends Block {
 		this.setHardness(2F);
 		this.setStepSound(Block.soundTypeMetal);
 		this.setCreativeTab(Hygienic.hygienicTab);
-		this.setBlockName("PolluCraft");
+		this.setBlockName("pollucraft");
 	}
 
 	@Override

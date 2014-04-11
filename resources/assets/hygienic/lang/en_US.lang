@@ -1,6 +1,6 @@
 itemGroup.Hygienic=Hygienic
 
-tile.Pollution.name=Pollution
-tile.PolluCraft.name=PolluCraft
+tile.pollution.name=Pollution
+tile.pollucraft.name=PolluCraft
 
-item.Mop.name=Mop
+item.mop.name=Mop

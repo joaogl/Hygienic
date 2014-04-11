@@ -94,11 +94,11 @@ public class Hygienic {
 		
 		// Blocks
 		//LanguageRegistry.addName(blockPollution, "Pollution"); Just add in the language file, for blocks use like this: tile.<block name>.name=<localized block name>
-		GameRegistry.registerBlock(blockPollution, blockPollution.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(blockPollution, blockPollution.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
 		OreDictionary.registerOre("Pollution", blockPollution);
 
 		//LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
-		GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
 		OreDictionary.registerOre("PolluCraft", blockPolluCraft);
 
 		// Tabs

@@ -49,7 +49,7 @@ public class Hygienic {
 	// General Mod Stuff
 	@Instance(ModInfo.MOD_ID)
 	public static Hygienic instance;
-	@SidedProxy(clientSide = "us.joaogldarkdeagle.hygienic.proxy.ClientProxy", serverSide = "us.joaogldarkdeagle.hygienic.proxy.CommonProxy")
+	@SidedProxy(clientSide = "hygienic.proxy.ClientProxy", serverSide = "hygienic.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
 	/**

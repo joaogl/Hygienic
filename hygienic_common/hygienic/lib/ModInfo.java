@@ -26,7 +26,7 @@ public class ModInfo {
     public static final String CREATIVETAB_NAME = "Hygienic";
     
     //public static boolean debugging = true;
-    public static boolean debug = true;
+    //public static boolean debug = true;
     
     public static int ScreenWidth = 0;
     public static int ScreenHeight = 0;

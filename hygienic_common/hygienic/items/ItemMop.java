@@ -48,7 +48,7 @@ public class ItemMop extends ItemTool {
 		this.texture = Textures.ITEM_MOP;
 		this.maxStackSize = 1;
 		this.setCreativeTab(Hygienic.hygienicTab);
-		this.setUnlocalizedName("Mop");
+		this.setUnlocalizedName("mop");
 	}
 
 	@Override

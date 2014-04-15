@@ -18,17 +18,17 @@
 package hygienic.lib;
 
 public class ModInfo {
-
-	public static final String MOD_ID = "JoaoglDD_Hygienic";
-	public static final String MOD_NAME = "Hygienic";
-	public static final String MOD_VERSION = "BETA V1.0.0";
-
-	public static final String CREATIVETAB_NAME = "Hygienic";
-
-	public static boolean debugging = true;
-	public static boolean debug = true;
-
-	public static int ScreenWidth = 0;
-	public static int ScreenHeight = 0;
-
+    
+    public static final String MOD_ID = "JoaoglDD_Hygienic";
+    public static final String MOD_NAME = "Hygienic";
+    public static final String MOD_VERSION = "BETA V1.0.0";
+    
+    public static final String CREATIVETAB_NAME = "Hygienic";
+    
+    //public static boolean debugging = true;
+    public static boolean debug = true;
+    
+    public static int ScreenWidth = 0;
+    public static int ScreenHeight = 0;
+    
 }

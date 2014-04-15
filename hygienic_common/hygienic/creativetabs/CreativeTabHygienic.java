@@ -17,17 +17,18 @@
 
 package hygienic.creativetabs;
 
+import hygienic.Hygienic;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class CreativeTabHygienic extends CreativeTabs {
-
-	public CreativeTabHygienic() {
-		super(CreativeTabs.getNextID(), "Hygienic");
-	}
-
-	@Override
-	public Item getTabIconItem() {
-		return new Item();
-	}
+    
+    public CreativeTabHygienic() {
+        super(CreativeTabs.getNextID(), "Hygienic");
+    }
+    
+    @Override
+    public Item getTabIconItem() {
+        return Hygienic.itemMop;
+    }
 }

@@ -33,50 +33,51 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("unchecked")
 public class ItemMop extends ItemTool {
-	private String texture;
-	@SuppressWarnings("rawtypes")
-	public static final Set blocksEffectiveAgainst;
-
-	static {
-		blocksEffectiveAgainst = new HashSet<Block>();
-
-		blocksEffectiveAgainst.add(Hygienic.blockPollution);
-	}
-
-	public ItemMop() {
-		super(0, ToolMaterial.STONE, blocksEffectiveAgainst);
-		this.texture = Textures.ITEM_MOP;
-		this.maxStackSize = 1;
-		this.setCreativeTab(Hygienic.hygienicTab);
-		this.setUnlocalizedName("mop");
-	}
-
-	@Override
-	public void registerIcons(IIconRegister iconReg) {
-		this.itemIcon = iconReg.registerIcon(this.texture);
-	}
-
-	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-		return 72000;
-	}
-
-	@Override
-	public boolean onBlockDestroyed(ItemStack item, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
-		if (block == Hygienic.blockPollution) {
-			item.damageItem(1, entityLivingBase);
-		}
-		return false;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.block;
-	}
-
-	@Override
-	public boolean isFull3D() {
-		return true;
-	}
-
+    
+    private String texture;
+    @SuppressWarnings("rawtypes")
+    public static final Set blocksEffectiveAgainst;
+    
+    static {
+        blocksEffectiveAgainst = new HashSet<Block>();
+        
+        blocksEffectiveAgainst.add(Hygienic.blockPollution);
+    }
+    
+    public ItemMop() {
+        super(0, ToolMaterial.STONE, blocksEffectiveAgainst);
+        this.texture = Textures.ITEM_MOP;
+        this.maxStackSize = 1;
+        this.setCreativeTab(Hygienic.hygienicTab);
+        this.setUnlocalizedName("mop");
+    }
+    
+    @Override
+    public void registerIcons(IIconRegister iconReg) {
+        this.itemIcon = iconReg.registerIcon(this.texture);
+    }
+    
+    @Override
+    public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+        return 72000;
+    }
+    
+    @Override
+    public boolean onBlockDestroyed(ItemStack item, World world, Block block, int x, int y, int z, EntityLivingBase entityLivingBase) {
+        if(block == Hygienic.blockPollution) {
+            item.damageItem(1, entityLivingBase);
+        }
+        return false;
+    }
+    
+    @Override
+    public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+        return EnumAction.block;
+    }
+    
+    @Override
+    public boolean isFull3D() {
+        return true;
+    }
+    
 }

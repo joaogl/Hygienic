@@ -18,5 +18,5 @@
 package hygienic.util;
 
 public class Util {
-
+    
 }

@@ -45,72 +45,71 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
 public class Hygienic {
-
-	// General Mod Stuff
-	@Instance(ModInfo.MOD_ID)
-	public static Hygienic instance;
-	@SidedProxy(clientSide = "hygienic.proxy.ClientProxy", serverSide = "hygienic.proxy.CommonProxy")
-	public static CommonProxy proxy;
-
-	/**
-	 * Items / Blocks / Etc's.
-	 */
-
-	// Gui
-	private GuiHandler guiHandler = new GuiHandler();
-
-	// Tabs
-	public static final CreativeTabHygienic hygienicTab = new CreativeTabHygienic();
-
-	// Blocks
-	public static final Block blockPollution = new BlockPollution();
-	public static final Block blockPolluCraft = new BlockPolluCraft();
-
-	// Items
-	public static final Item itemMop = new ItemMop();
-
-	@EventHandler
-	public void serverStart(FMLServerStartingEvent event) {
-		MinecraftServer server = MinecraftServer.getServer();
-		ICommandManager command = server.getCommandManager();
-		ServerCommandManager serverCommand = ((ServerCommandManager) command);
-		serverCommand.registerCommand(new HygienicCommand());
-	}
-
-	@EventHandler
-	public void init(FMLPreInitializationEvent event) {
-		proxy.registerRenderInformation();
-
-		// Recipes
-		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.farmland, 1), Blocks.dirt, Items.stone_hoe);
-		GameRegistry.addShapedRecipe(new ItemStack(blockPolluCraft, 1), "   ", " XX", " XX", 'X', Items.iron_ingot);
-		GameRegistry.addShapedRecipe(new ItemStack(itemMop, 1), "  S", "TS ", "TT ", 'S', Items.stick, 'T', Items.string);
-
-		// Smeltings
-		//GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian), 1.0F); //??
-		
-		//Language
-		proxy.initLang();
-		
-		// Blocks
-		//LanguageRegistry.addName(blockPollution, "Pollution"); Just add in the language file, for blocks use like this: tile.<block name>.name=<localized block name>
-		GameRegistry.registerBlock(blockPollution, blockPollution.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
-		OreDictionary.registerOre("Pollution", blockPollution);
-
-		//LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
-		GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
-		OreDictionary.registerOre("PolluCraft", blockPolluCraft);
-
-		// Tabs
-		//LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod"); Lang file, usage: itemGroup.<tab unlocalized name>=<localized name>
-
-		// Items
-		//LanguageRegistry.addName(itemMop, "Mop"); Lang file. usage for items: item.<unlocalized name>.name=<localized name>
-		GameRegistry.registerItem(itemMop, "Mop");
-		OreDictionary.registerOre("Mop", itemMop);
-
-		// Gui
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
-	}
-
+    
+    // General Mod Stuff
+    @Instance(ModInfo.MOD_ID)
+    public static Hygienic instance;
+    @SidedProxy(clientSide = "hygienic.proxy.ClientProxy", serverSide = "hygienic.proxy.CommonProxy")
+    public static CommonProxy proxy;
+    
+    /**
+     * Items / Blocks / Etc's.
+     */
+    
+    // Gui
+    private GuiHandler guiHandler = new GuiHandler();
+    
+    // Tabs
+    public static final CreativeTabHygienic hygienicTab = new CreativeTabHygienic();
+    
+    // Blocks
+    public static final Block blockPollution = new BlockPollution();
+    public static final Block blockPolluCraft = new BlockPolluCraft();
+    
+    // Items
+    public static final Item itemMop = new ItemMop();
+    
+    @EventHandler
+    public void serverStart(FMLServerStartingEvent event) {
+        MinecraftServer server = MinecraftServer.getServer();
+        ICommandManager command = server.getCommandManager();
+        ServerCommandManager serverCommand = ((ServerCommandManager) command);
+        serverCommand.registerCommand(new HygienicCommand());
+    }
+    
+    @EventHandler
+    public void init(FMLPreInitializationEvent event) {
+        proxy.registerRenderInformation();
+        
+        // Recipes
+        GameRegistry.addShapelessRecipe(new ItemStack(Blocks.farmland, 1), Blocks.dirt, Items.stone_hoe);
+        GameRegistry.addShapedRecipe(new ItemStack(blockPolluCraft, 1), "   ", " XX", " XX", 'X', Items.iron_ingot);
+        GameRegistry.addShapedRecipe(new ItemStack(itemMop, 1), "  S", "TS ", "TT ", 'S', Items.stick, 'T', Items.string);
+        
+        // Smeltings
+        //GameRegistry.addSmelting(Blocks.coal_block, new ItemStack(Blocks.obsidian), 1.0F); //??
+        
+        //Language
+        //proxy.initLang();
+        
+        // Blocks
+        //LanguageRegistry.addName(blockPollution, "Pollution"); Just add in the language file, for blocks use like this: tile.<block name>.name=<localized block name>
+        GameRegistry.registerBlock(blockPollution, blockPollution.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
+        OreDictionary.registerOre("Pollution", blockPollution);
+        
+        //LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
+        GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
+        OreDictionary.registerOre("PolluCraft", blockPolluCraft);
+        
+        // Tabs
+        //LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod"); Lang file, usage: itemGroup.<tab unlocalized name>=<localized name>
+        
+        // Items
+        //LanguageRegistry.addName(itemMop, "Mop"); Lang file. usage for items: item.<unlocalized name>.name=<localized name>
+        GameRegistry.registerItem(itemMop, "Mop");
+        OreDictionary.registerOre("itemMop", itemMop);
+        
+        // Gui
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
+    }
 }

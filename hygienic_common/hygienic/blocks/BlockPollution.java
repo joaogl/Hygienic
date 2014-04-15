@@ -39,107 +39,124 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPollution extends Block {
-	private String texture;
-
-	public BlockPollution() {
-		super(Material.plants);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0035F, 1.0F);
-		this.setHardness(1F);
-		this.setStepSound(Block.soundTypeSnow);
-		this.setBlockName("pollution");
-		this.setCreativeTab(Hygienic.hygienicTab);
-		this.texture = Textures.BLOCK_POLLUTION;
-		this.setBlockTextureName(this.texture);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {
-		this.blockIcon = par1IconRegister.registerIcon(this.texture);
-	}
-
-	@Override
-	public boolean getCanBlockGrass() {
-		return false;
-	}
-
-	@Override
-	public boolean canReplace(World world, int par1, int par2, int par3, int par4, ItemStack par5) {
-		if (ModInfo.debugging) return true;
-		else return false;
-	}
-
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
-
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	@Override
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int par4) {
-		world.setBlock(x, y, z, this);
-	}
-
-	@Override
-	public boolean canHarvestBlock(EntityPlayer player, int meta) {
-		return super.canHarvestBlock(player, meta);
-	}
-
-	@Override
-	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		if (ModInfo.debugging) return true;
-		else return false;
-	}
-
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-		if (world.getBlock(x, (y - 1), z) == Block.getBlockById(0)) world.setBlockToAir(x, y, z);
-		int blockX = x, blockY = y + 1, blockZ = z;
-
-		Block blockAbove = world.getBlock(blockX, blockY, blockZ);
-		if (blockAbove != Block.getBlockById(0)) {
-			if (blockAbove == Blocks.water) return;
-			world.setBlockToAir(blockX, blockY, blockZ);
-		}
-	}
-
-	@Override
-	public void addCollisionBoxesToList(World p_149743_1_, int p_149743_2_, int p_149743_3_, int p_149743_4_, AxisAlignedBB p_149743_5_, @SuppressWarnings("rawtypes") List p_149743_6_, Entity p_149743_7_) {
-		// None to make it nonCollidable
-	}
-
-	@Override
-	public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6) {
-		super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
-		par1World.setBlockToAir(par3, par4, par5);
-	}
-
-	@Override
-	public Item getItemDropped(int par1, Random par2, int par3) {
-		if (ModInfo.debugging) return Item.getItemFromBlock(this);
-		else return null;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass() {
-		return 1;
-	}
-
-	@Override
-	public int quantityDropped(Random par1Random) {
-		if (ModInfo.debugging) return 1;
-		else return 0;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side) {
-		if (side == 1) return true;
-		return false;
-	}
-
+    
+    private String texture;
+    
+    public BlockPollution() {
+        super(Material.plants);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0035F, 1.0F);
+        this.setHardness(1F);
+        this.setStepSound(Block.soundTypeSnow);
+        this.setBlockName("pollution");
+        this.setCreativeTab(Hygienic.hygienicTab);
+        this.texture = Textures.BLOCK_POLLUTION;
+        this.setBlockTextureName(this.texture);
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister par1IconRegister) {
+        this.blockIcon = par1IconRegister.registerIcon(this.texture);
+    }
+    
+    @Override
+    public boolean getCanBlockGrass() {
+        return false;
+    }
+    
+    @Override
+    public boolean canReplace(World world, int x, int y, int z, int meta, ItemStack par5) {
+        return false;
+    }
+    
+    @Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
+    
+    @Override
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
+    
+    /*@Override
+    public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int par4) {
+    	//world.setBlock(x, y, z, this);
+    }// */
+    
+    @Override
+    public float getPlayerRelativeBlockHardness(EntityPlayer entityPlayer, World world, int x, int y, int z) {
+        return entityPlayer.capabilities.isCreativeMode ? 1.0F : entityPlayer.getCurrentEquippedItem() != null
+                && entityPlayer.getCurrentEquippedItem().getItem() == Hygienic.itemMop ? 1.0F : -1.0F;
+        
+        /*if(entityPlayer.capabilities.isCreativeMode) {
+            return 1.0F;
+        }
+        
+        if(entityPlayer.getCurrentEquippedItem() != null && entityPlayer.getCurrentEquippedItem().getItem() == Hygienic.itemMop) {
+            System.out.println("Works");
+            return 1.0F;
+        }
+        
+        return -1.0F; // */
+    }
+    
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int meta) {
+        return false;
+    }
+    
+    /*@Override
+    public boolean canPlaceBlockAt(World par1World, int x, int y, int z) {
+        if(ModInfo.debugging)
+            return true;
+        else return false;
+    }// *///Why limiting this? Players shouldn't be able to get pollution, so, less code needed, fool
+    
+    @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+        if(world.getBlock(x, (y - 1), z) == Block.getBlockById(0)) world.setBlockToAir(x, y, z);
+        int blockX = x, blockY = y + 1, blockZ = z;
+        
+        Block blockAbove = world.getBlock(blockX, blockY, blockZ);
+        if(blockAbove != Block.getBlockById(0)) {
+            if(blockAbove == Blocks.water) return;
+            world.setBlockToAir(blockX, blockY, blockZ);
+        }
+    }
+    
+    @Override
+    public void addCollisionBoxesToList(World p_149743_1_, int p_149743_2_, int p_149743_3_, int p_149743_4_, AxisAlignedBB p_149743_5_,
+            @SuppressWarnings("rawtypes") List p_149743_6_, Entity p_149743_7_) {
+        // None to make it nonCollidable
+    }
+    
+    @Override
+    public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6) {
+        super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
+        par1World.setBlockToAir(par3, par4, par5);
+    }
+    
+    @Override
+    public Item getItemDropped(int par1, Random par2, int par3) {
+        return null; //Just return null, no need to drop pollution
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass() {
+        return 1;
+    }
+    
+    @Override
+    public int quantityDropped(Random random) {
+        return 0;
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side) {
+        if(side == 1) return true;
+        return false;
+    }
+    
 }

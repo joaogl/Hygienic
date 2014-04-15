@@ -17,18 +17,10 @@
 
 package hygienic.proxy;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.Side;
-
 public class CommonProxy {
     
     public void registerRenderInformation() {
         
-    }
-    
-    public void initLang() {
-        LanguageRegistry.instance().loadLanguagesFor(FMLCommonHandler.instance().findContainerFor(this), Side.SERVER);
     }
     
 }

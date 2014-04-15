@@ -124,8 +124,8 @@ public class BlockPollution extends Block {
     }
     
     @Override
-    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask,
-            @SuppressWarnings("rawtypes") List collisionBoxes, Entity collidingEntity) {
+    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, @SuppressWarnings("rawtypes") List collisionBoxes,
+            Entity collidingEntity) {
         // None to make it nonCollidable
     }
     

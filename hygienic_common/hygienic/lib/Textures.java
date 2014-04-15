@@ -23,7 +23,7 @@ public class Textures {
     public static final String ITEM_LYE = "hygienic:Lye";
     public static final String ITEM_RUBBER = "hygienic:Rubber";
     
-    public static final String BLOCK_POLLUTION = "hygienic:Pollu";
+    public static final String BLOCK_POLLUTION = "hygienic:Pollution";
     public static final String BLOCK_POLLUCRAFT_TOPBOT = "hygienic:PolluCraftTopBot";
     public static final String BLOCK_POLLUCRAFT_SIDES = "hygienic:PolluCraftSides";
     public static final String BLOCK_POLLUCRAFT_FRONT = "hygienic:PolluCraftFront";

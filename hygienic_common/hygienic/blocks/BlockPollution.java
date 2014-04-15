@@ -18,7 +18,6 @@
 package hygienic.blocks;
 
 import hygienic.Hygienic;
-import hygienic.lib.ModInfo;
 import hygienic.lib.Textures;
 
 import java.util.List;

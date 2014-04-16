@@ -17,8 +17,9 @@
 
 package hygienic.gui;
 
-import hygienic.Hygienic;
+import hygienic.tileentities.TileEntityPolluCraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -26,22 +27,27 @@ public class GuiHandler implements IGuiHandler {
     
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        //TileEntity tile_entity = world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        
         switch(id) {
             case 1:
-                return id == 1 && world.getBlock(x, y, z) == Hygienic.blockPolluCraft ? new ContainerPolluCraft(player.inventory, world, x, y, z) : null;
+                if(tileEntity != null && tileEntity instanceof TileEntityPolluCraft)
+                    return new ContainerPolluCraft(player.inventory, (TileEntityPolluCraft) tileEntity);
         }
+        
         return null;
     }
     
     @Override
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        //TileEntity tile_entity = world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
         
         switch(id) {
             case 1:
-                return id == 1 && world.getBlock(x, y, z) == Hygienic.blockPolluCraft ? new GuiPolluCraft(player.inventory, world, x, y, z) : null;
+                if(tileEntity != null && tileEntity instanceof TileEntityPolluCraft)
+                    return new GuiPolluCraft(player.inventory, (TileEntityPolluCraft) tileEntity);
         }
+        
         return null;
     }
 }

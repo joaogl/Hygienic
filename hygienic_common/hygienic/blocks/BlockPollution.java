@@ -53,8 +53,8 @@ public class BlockPollution extends Block {
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(this.texture);
+    public void registerIcons(IIconRegister iconRegister) {
+        this.blockIcon = iconRegister.registerIcon(this.texture);
     }
     
     @Override

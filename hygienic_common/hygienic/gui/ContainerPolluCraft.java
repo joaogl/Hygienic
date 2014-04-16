@@ -17,8 +17,7 @@
 
 package hygienic.gui;
 
-import hygienic.Hygienic;
-import hygienic.lib.ModInfo;
+import hygienic.tileentities.TileEntityPolluCraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -26,20 +25,40 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.world.World;
 
 public class ContainerPolluCraft extends Container {
     
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
     public IInventory craftResult = new InventoryCraftResult();
-    private World worldObj;
-    private int posX;
-    private int posY;
-    private int posZ;
+    private TileEntityPolluCraft tileEntityPolluCraft;
     
-    public ContainerPolluCraft(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
+    public ContainerPolluCraft(InventoryPlayer inventoryPlayer, TileEntityPolluCraft tileEntityPolluCraft) {
+        this.tileEntityPolluCraft = tileEntityPolluCraft;
+        
+        addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, 0, 135, 34 + 14));
+        
+        for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) {
+                addSlotToContainer(new Slot(this.craftMatrix, j + i * 4, 8 + j * 18, (7 + 14) + i * 18));
+            }
+        }
+        
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 9; j++) {
+                addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, (99 + 14) + i * 18));
+            }
+        }
+        
+        for(int i = 0; i < 9; i++) {
+            addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 171));
+        }
+        
+        onCraftMatrixChanged(this.craftMatrix);
+    }
+    
+    /*public ContainerPolluCraft(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
         this.worldObj = par2World;
         this.posX = par3;
         this.posY = par4;
@@ -62,37 +81,35 @@ public class ContainerPolluCraft extends Container {
         for(int j1 = 0; j1 < 9; j1++)
             this.addSlotToContainer(new Slot(par1InventoryPlayer, j1, 8 + j1 * 18, 157));
         
-        System.out.println(ModInfo.ScreenHeight);
-        
         this.onCraftMatrixChanged(this.craftMatrix);
-    }
+    } // */
     
     @Override
     public void onCraftMatrixChanged(IInventory par1IInventory) {
-        this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-    }
+        this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance()
+                .findMatchingRecipe(this.craftMatrix, this.tileEntityPolluCraft.getWorldObj())); //TODO: Change this, OF COURSE.
+    } // */
     
     @Override
-    public void onContainerClosed(EntityPlayer par1EntityPlayer) {
+    public void onContainerClosed(EntityPlayer par1EntityPlayer) { //TODO: Make sure the items are saved after closing the GUI
         super.onContainerClosed(par1EntityPlayer);
         
-        if(!this.worldObj.isRemote) {
+        if(!this.tileEntityPolluCraft.getWorldObj().isRemote) {
             for(int var2 = 0; var2 < 16; ++var2) {
                 ItemStack var3 = this.craftMatrix.getStackInSlotOnClosing(var2);
                 if(var3 != null) par1EntityPlayer.dropPlayerItemWithRandomChoice(var3, false);
             }
         }
-    }
+    } // */
     
     @Override
-    public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Hygienic.blockPolluCraft ? false : par1EntityPlayer.getDistanceSq(
-                (double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+    public boolean canInteractWith(EntityPlayer entityPlayer) {
+        return tileEntityPolluCraft.isUseableByPlayer(entityPlayer);
     }
     
     @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-        ItemStack var3 = null;
+        /*ItemStack var3 = null;
         Slot var4 = (Slot) this.inventorySlots.get(par2);
         
         if(var4 != null && var4.getHasStack()) {
@@ -114,6 +131,8 @@ public class ContainerPolluCraft extends Container {
             if(var5.stackSize == var3.stackSize) return null;
             var4.onPickupFromSlot(par1EntityPlayer, var5);
         }
-        return var3;
+        return var3; // */
+        
+        return null;
     }
 }

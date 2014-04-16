@@ -44,7 +44,7 @@ public class CraftingManager {
     
     private CraftingManager() {
         recipes = new ArrayList<IRecipe>();
-        this.func_92051_a(new ItemStack(Hygienic.itemMop, 1),
+        this.addRecipe(new ItemStack(Hygienic.itemMop, 1),
                 new Object[] { " SS ", " SS ", " SS ", "WWWW", Character.valueOf('S'), Items.stick, Character.valueOf('W'), Items.string }); // TODO
         //this.func_92051_a(new ItemStack(Hygienic.instance.itemLye, 1), new Object[] { " RR ", "RFBR", "RWWR", "RRRR", Character.valueOf('R'), Hygienic.instance.itemRubber, Character.valueOf('F'), Item.itemRegistry.getObject("feather"), Character.valueOf('B'), Item.itemRegistry.getObject("bone"), Character.valueOf('W'), Item.itemRegistry.getObject("water_bucket") });
         
@@ -52,7 +52,7 @@ public class CraftingManager {
         System.out.println(this.recipes.size() + " recipes");
     }
     
-    public PolluShapedRecipes func_92051_a(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
+    public PolluShapedRecipes addRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
         String var3 = "";
         int var4 = 0;
         int var5 = 0;

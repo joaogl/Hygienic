@@ -119,8 +119,9 @@ public class BlockPolluCraft extends BlockContainer {
     }
     
     @Override
-    @SideOnly(Side.SERVER)
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int var6, float var7, float var8, float var9) {
+        if(world.isRemote) return true;
+        
         if(player.isSneaking()) return false;
         
         player.openGui(Hygienic.instance, 1, world, x, y, z);
@@ -138,8 +139,7 @@ public class BlockPolluCraft extends BlockContainer {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         
         if(!(tileEntity instanceof TileEntityPolluCraft)) {
-            System.out.println("tileEntity not instanceof TileEntityPolluCraft, it is " + tileEntity.getClass().getSimpleName());
-            return;
+           return;
         }
         
         TileEntityPolluCraft tileEntityPolluCraft = (TileEntityPolluCraft) tileEntity;

@@ -2,24 +2,21 @@ package hygienic.gui;
 
 import hygienic.tileentities.TileEntityPolluCraft;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public interface PolluRecipe {
     
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    boolean matches(TileEntityPolluCraft var1, World var2);
+    boolean matches(TileEntityPolluCraft tileEntityPolluCraft);
     
     /**
      * Returns an Item that is the result of this recipe
      */
-    ItemStack getCraftingResult(TileEntityPolluCraft var1);
+    ItemStack getCraftingResult();
     
     /**
-     * Returns the size of the recipe area
+     * Returns the number of slots occupied by this recipe's shape
      */
-    int getRecipeSize();
-    
-    ItemStack getRecipeOutput();
+    int getSlotsOccupied();
 }

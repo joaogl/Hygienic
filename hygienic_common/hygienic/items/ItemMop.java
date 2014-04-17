@@ -47,7 +47,7 @@ public class ItemMop extends ItemTool {
     public ItemMop() {
         super(0, ToolMaterial.STONE, blocksEffectiveAgainst);
         this.texture = Textures.ITEM_MOP;
-        this.maxStackSize = 1;
+        this.setMaxStackSize(1);
         this.setCreativeTab(Hygienic.hygienicTab);
         this.setUnlocalizedName("mop");
     }

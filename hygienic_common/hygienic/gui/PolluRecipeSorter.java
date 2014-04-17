@@ -30,7 +30,7 @@ public class PolluRecipeSorter implements Comparator<PolluRecipe> {
     @Override
     public int compare(PolluRecipe par1IRecipe, PolluRecipe par2IRecipe) {
         return par1IRecipe instanceof PolluShapelessRecipes && par2IRecipe instanceof PolluShapedRecipe ? 1 : (par2IRecipe instanceof PolluShapelessRecipes
-                && par1IRecipe instanceof PolluShapedRecipe ? -1 : (par2IRecipe.getRecipeSize() < par1IRecipe.getRecipeSize() ? -1 : (par2IRecipe
-                .getRecipeSize() > par1IRecipe.getRecipeSize() ? 1 : 0)));
+                && par1IRecipe instanceof PolluShapedRecipe ? -1 : (par2IRecipe.getSlotsOccupied() < par1IRecipe.getSlotsOccupied() ? -1 : (par2IRecipe
+                .getSlotsOccupied() > par1IRecipe.getSlotsOccupied() ? 1 : 0)));
     }
 }

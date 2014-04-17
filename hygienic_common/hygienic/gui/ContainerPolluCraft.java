@@ -83,13 +83,22 @@ public class ContainerPolluCraft extends Container {
     } // */
     
     @Override
-    public void onCraftMatrixChanged(IInventory par1IInventory) {
+    public void onCraftMatrixChanged(IInventory inventory) {
         this.craftResult.setInventorySlotContents(0,
-                CraftingManager.instance().findMatchingRecipe(tileEntityPolluCraft, this.tileEntityPolluCraft.getWorldObj()));
+                CraftingManager.instance().findMatchingRecipe(tileEntityPolluCraft, this.tileEntityPolluCraft.getWorldObj()).getCraftingResult());
+        
+        super.onCraftMatrixChanged(inventory);
     } // */
     
+    @Override
+    public ItemStack slotClick(int par1, int par2, int par3, EntityPlayer par4EntityPlayer) {
+        this.onCraftMatrixChanged(tileEntityPolluCraft); //Make sure we notify the client of updates
+        
+        return super.slotClick(par1, par2, par3, par4EntityPlayer);
+    }
+    
     /*@Override
-    public void onContainerClosed(EntityPlayer par1EntityPlayer) { //TODO: Make sure the items are saved after closing the GUI
+    public void onContainerClosed(EntityPlayer par1EntityPlayer) {
         super.onContainerClosed(par1EntityPlayer);
     } // */
     

@@ -19,29 +19,29 @@ package hygienic.gui;
 
 import hygienic.tileentities.TileEntityPolluCraft;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class PolluShapelessRecipes implements PolluRecipe {
     
     private final ItemStack recipeOutput;
-    public final List<?> recipeItems;
+    public final Map<Integer, Item> recipeItems;
     
-    public PolluShapelessRecipes(ItemStack par1ItemStack, List<?> par2List) {
-        this.recipeOutput = par1ItemStack;
-        this.recipeItems = par2List;
+    public PolluShapelessRecipes(ItemStack itemStack, Item... items) {
+        this.recipeOutput = itemStack;
+        this.recipeItems = new LinkedHashMap<Integer, Item>(16);
+        
+        for(int i = 0; i < items.length; i++) {
+            recipeItems.put(i, items[i]);
+        }
     }
     
-    public ItemStack getRecipeOutput() {
-        return this.recipeOutput;
-    }
-    
-    public boolean matches(TileEntityPolluCraft par1InventoryCrafting, World par2World) {
-        ArrayList<?> arraylist = new ArrayList<Object>(this.recipeItems);
+    @Override
+    public boolean matches(TileEntityPolluCraft tileEntityPolluCraft) {
+        /*ArrayList<?> arraylist = new ArrayList<Object>(this.recipeItems);
         
         for(int i = 0; i < 4; ++i) {
             for(int j = 0; j < 4; ++j) {
@@ -64,15 +64,18 @@ public class PolluShapelessRecipes implements PolluRecipe {
                 }
             }
         }
-        return arraylist.isEmpty();
+        return arraylist.isEmpty(); // */
+        
+        return false; //TODO THIS
     }
     
-    public ItemStack getCraftingResult(TileEntityPolluCraft par1InventoryCrafting) {
+    @Override
+    public ItemStack getCraftingResult() {
         return this.recipeOutput.copy();
     }
     
-    public int getRecipeSize() {
-        return this.recipeItems.size();
+    @Override
+    public int getSlotsOccupied() {
+        return recipeItems.size();
     }
-    
 }

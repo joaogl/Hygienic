@@ -17,96 +17,72 @@
 
 package hygienic.gui;
 
+import hygienic.blocks.BlockPolluCraft;
 import hygienic.tileentities.TileEntityPolluCraft;
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.Item;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
 public class PolluShapedRecipe implements PolluRecipe {
     
-    public final int recipeWidth;
-    public final int recipeHeight;
-    public final ItemStack[] recipeItems;
-    
+    public final Map<Integer, ItemStack> recipeItems;
     private ItemStack recipeOutput;
     
-    public final Item recipeOutputItem;
-    private boolean field_92101_f = false;
-    
-    public PolluShapedRecipe(int par1, int par2, ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack) {
-        this.recipeOutputItem = par4ItemStack.getItem();
-        this.recipeWidth = par1;
-        this.recipeHeight = par2;
-        this.recipeItems = par3ArrayOfItemStack;
-        this.recipeOutput = par4ItemStack;
+    public PolluShapedRecipe(ItemStack output, ItemStack[] items) {
+        this.recipeOutput = output;
+        this.recipeItems = new LinkedHashMap<Integer, ItemStack>(BlockPolluCraft.craftingGridSize());
+        
+        for(int i = 0; i < items.length; i++) {
+            recipeItems.put(i, items[i]);
+        }
+        
+        if(recipeItems.size() != BlockPolluCraft.craftingGridSize()) {
+            for(int i = recipeItems.size() - 1; i < BlockPolluCraft.craftingGridSize(); i++) {
+                recipeItems.put(i, null);
+            }
+        }
+        
+        for(int i = 0; i < recipeItems.size(); i++) {
+            try {
+                recipeItems.get(i).getItem();
+            } catch(NullPointerException e) {
+                recipeItems.put(i, null);
+            }
+        }
     }
     
     @Override
-    public boolean matches(TileEntityPolluCraft par1InventoryCrafting, World par2World) {
-        for(int i = 0; i <= 4 - this.recipeWidth; ++i) {
-            for(int j = 0; j <= 4 - this.recipeHeight; ++j) {
-                if(this.checkMatch(par1InventoryCrafting, i, j, true)) return true;
-                if(this.checkMatch(par1InventoryCrafting, i, j, false)) return true;
-            }
-        }
-        return false;
-    }
-    
-    private boolean checkMatch(TileEntityPolluCraft par1InventoryCrafting, int par2, int par3, boolean par4) {
-        for(int k = 0; k < 4; ++k) {
-            for(int l = 0; l < 4; ++l) {
-                int i1 = k - par2;
-                int j1 = l - par3;
-                ItemStack itemstack = null;
-                
-                if(i1 >= 0 && j1 >= 0 && i1 < this.recipeWidth && j1 < this.recipeHeight) {
-                    if(par4)
-                        itemstack = this.recipeItems[this.recipeWidth - i1 - 1 + j1 * this.recipeWidth];
-                    else itemstack = this.recipeItems[i1 + j1 * this.recipeWidth];
+    public boolean matches(TileEntityPolluCraft tileEntityPolluCraft) {
+        for(int slot = 0; slot < recipeItems.size(); slot++) {
+            ItemStack recipeStack = recipeItems.get(slot);
+            
+            if(recipeStack == null) {
+                if(tileEntityPolluCraft.getStackInSlot(slot) == null) {
+                    continue;
                 }
                 
-                ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(k + l);
-                
-                if(itemstack1 != null || itemstack != null) {
-                    if(itemstack1 == null && itemstack != null || itemstack1 != null && itemstack == null) return false;
-                    if(itemstack.getItem() != itemstack1.getItem()) return false;
-                    if(itemstack.getItemDamage() != 32767 && itemstack.getItemDamage() != itemstack1.getItemDamage()) return false;
-                }
+                continue;
             }
+            
+            if(ItemStack.areItemStacksEqual(recipeStack, tileEntityPolluCraft.getStackInSlot(slot))) {
+                continue;
+            }
+            
+            return false;
         }
+        
         return true;
     }
     
-    public ItemStack getCraftingResult(InventoryCrafting par1InventoryCrafting) {
-        ItemStack itemstack = this.getRecipeOutput().copy();
-        
-        if(this.field_92101_f) {
-            for(int i = 0; i < par1InventoryCrafting.getSizeInventory(); ++i) {
-                ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(i);
-                if(itemstack1 != null && itemstack1.hasTagCompound()) itemstack.setTagCompound((NBTTagCompound) itemstack1.stackTagCompound.copy());
-            }
-        }
-        return itemstack;
-    }
-    
-    public int getRecipeSize() {
-        return this.recipeWidth * this.recipeHeight;
-    }
-    
-    public PolluShapedRecipe func_92100_c() {
-        this.field_92101_f = true;
-        return this;
-    }
-    
     @Override
-    public ItemStack getCraftingResult(TileEntityPolluCraft var1) {
+    public ItemStack getCraftingResult() {
         return this.recipeOutput;
     }
     
     @Override
-    public ItemStack getRecipeOutput() {
-        return this.recipeOutput;
+    public int getSlotsOccupied() {
+        return recipeItems.size();
     }
 }

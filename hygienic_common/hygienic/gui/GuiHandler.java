@@ -31,8 +31,8 @@ public class GuiHandler implements IGuiHandler {
         
         switch(id) {
             case 1:
-                if(tileEntity != null && tileEntity instanceof TileEntityPolluCraft)
-                    return new ContainerPolluCraft(player.inventory, (TileEntityPolluCraft) tileEntity);
+                if(tileEntity != null && tileEntity instanceof TileEntityPolluCraft) return new ContainerPolluCraft(player.inventory,
+                        (TileEntityPolluCraft) tileEntity);
         }
         
         return null;
@@ -44,8 +44,8 @@ public class GuiHandler implements IGuiHandler {
         
         switch(id) {
             case 1:
-                if(tileEntity != null && tileEntity instanceof TileEntityPolluCraft)
-                    return new GuiPolluCraft(player.inventory, (TileEntityPolluCraft) tileEntity);
+                if(tileEntity != null && tileEntity instanceof TileEntityPolluCraft) return new GuiPolluCraft(player.inventory,
+                        (TileEntityPolluCraft) tileEntity);
         }
         
         return null;

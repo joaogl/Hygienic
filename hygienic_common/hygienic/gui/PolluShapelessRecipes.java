@@ -17,16 +17,16 @@
 
 package hygienic.gui;
 
+import hygienic.tileentities.TileEntityPolluCraft;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class PolluShapelessRecipes implements IRecipe {
+public class PolluShapelessRecipes implements PolluRecipe {
     
     private final ItemStack recipeOutput;
     public final List<?> recipeItems;
@@ -40,12 +40,12 @@ public class PolluShapelessRecipes implements IRecipe {
         return this.recipeOutput;
     }
     
-    public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World) {
+    public boolean matches(TileEntityPolluCraft par1InventoryCrafting, World par2World) {
         ArrayList<?> arraylist = new ArrayList<Object>(this.recipeItems);
         
         for(int i = 0; i < 4; ++i) {
             for(int j = 0; j < 4; ++j) {
-                ItemStack itemstack = par1InventoryCrafting.getStackInRowAndColumn(j, i);
+                ItemStack itemstack = par1InventoryCrafting.getStackInSlot(j + i);
                 
                 if(itemstack != null) {
                     boolean flag = false;
@@ -67,7 +67,7 @@ public class PolluShapelessRecipes implements IRecipe {
         return arraylist.isEmpty();
     }
     
-    public ItemStack getCraftingResult(InventoryCrafting par1InventoryCrafting) {
+    public ItemStack getCraftingResult(TileEntityPolluCraft par1InventoryCrafting) {
         return this.recipeOutput.copy();
     }
     

@@ -17,14 +17,14 @@
 
 package hygienic.gui;
 
+import hygienic.tileentities.TileEntityPolluCraft;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class PolluShapedRecipes implements IRecipe {
+public class PolluShapedRecipe implements PolluRecipe {
     
     public final int recipeWidth;
     public final int recipeHeight;
@@ -35,7 +35,7 @@ public class PolluShapedRecipes implements IRecipe {
     public final Item recipeOutputItem;
     private boolean field_92101_f = false;
     
-    public PolluShapedRecipes(int par1, int par2, ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack) {
+    public PolluShapedRecipe(int par1, int par2, ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack) {
         this.recipeOutputItem = par4ItemStack.getItem();
         this.recipeWidth = par1;
         this.recipeHeight = par2;
@@ -43,11 +43,8 @@ public class PolluShapedRecipes implements IRecipe {
         this.recipeOutput = par4ItemStack;
     }
     
-    public ItemStack getRecipeOutput() {
-        return this.recipeOutput;
-    }
-    
-    public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World) {
+    @Override
+    public boolean matches(TileEntityPolluCraft par1InventoryCrafting, World par2World) {
         for(int i = 0; i <= 4 - this.recipeWidth; ++i) {
             for(int j = 0; j <= 4 - this.recipeHeight; ++j) {
                 if(this.checkMatch(par1InventoryCrafting, i, j, true)) return true;
@@ -57,7 +54,7 @@ public class PolluShapedRecipes implements IRecipe {
         return false;
     }
     
-    private boolean checkMatch(InventoryCrafting par1InventoryCrafting, int par2, int par3, boolean par4) {
+    private boolean checkMatch(TileEntityPolluCraft par1InventoryCrafting, int par2, int par3, boolean par4) {
         for(int k = 0; k < 4; ++k) {
             for(int l = 0; l < 4; ++l) {
                 int i1 = k - par2;
@@ -70,7 +67,7 @@ public class PolluShapedRecipes implements IRecipe {
                     else itemstack = this.recipeItems[i1 + j1 * this.recipeWidth];
                 }
                 
-                ItemStack itemstack1 = par1InventoryCrafting.getStackInRowAndColumn(k, l);
+                ItemStack itemstack1 = par1InventoryCrafting.getStackInSlot(k + l);
                 
                 if(itemstack1 != null || itemstack != null) {
                     if(itemstack1 == null && itemstack != null || itemstack1 != null && itemstack == null) return false;
@@ -98,8 +95,18 @@ public class PolluShapedRecipes implements IRecipe {
         return this.recipeWidth * this.recipeHeight;
     }
     
-    public PolluShapedRecipes func_92100_c() {
+    public PolluShapedRecipe func_92100_c() {
         this.field_92101_f = true;
         return this;
+    }
+    
+    @Override
+    public ItemStack getCraftingResult(TileEntityPolluCraft var1) {
+        return this.recipeOutput;
+    }
+    
+    @Override
+    public ItemStack getRecipeOutput() {
+        return this.recipeOutput;
     }
 }

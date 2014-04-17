@@ -113,11 +113,11 @@ public class BlockPollution extends Block {
     
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-        if(world.getBlock(x, (y - 1), z) == Block.getBlockById(0)) world.setBlockToAir(x, y, z);
+        if(world.getBlock(x, (y - 1), z) == Blocks.air) world.setBlockToAir(x, y, z);
         int blockX = x, blockY = y + 1, blockZ = z;
         
         Block blockAbove = world.getBlock(blockX, blockY, blockZ);
-        if(blockAbove != Block.getBlockById(0)) {
+        if(blockAbove != Blocks.air) {
             if(blockAbove == Blocks.water) return;
             world.setBlockToAir(blockX, blockY, blockZ);
         }

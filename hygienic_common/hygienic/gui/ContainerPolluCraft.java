@@ -23,25 +23,23 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 
 public class ContainerPolluCraft extends Container {
     
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
     public IInventory craftResult = new InventoryCraftResult();
     private TileEntityPolluCraft tileEntityPolluCraft;
     
     public ContainerPolluCraft(InventoryPlayer inventoryPlayer, TileEntityPolluCraft tileEntityPolluCraft) {
         this.tileEntityPolluCraft = tileEntityPolluCraft;
         
-        addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, 0, 135, 34 + 14));
+        addSlotToContainer(new SlotCrafting(inventoryPlayer.player, tileEntityPolluCraft, craftResult, 0, 135, 34 + 14));
         
         for(int i = 0; i < 4; i++) {
             for(int j = 0; j < 4; j++) {
-                addSlotToContainer(new Slot(this.craftMatrix, j + i * 4, 8 + j * 18, (7 + 14) + i * 18));
+                addSlotToContainer(new Slot(tileEntityPolluCraft, j + i * 4, 8 + j * 18, (7 + 14) + i * 18));
             }
         }
         
@@ -55,7 +53,7 @@ public class ContainerPolluCraft extends Container {
             addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 171));
         }
         
-        onCraftMatrixChanged(this.craftMatrix);
+        onCraftMatrixChanged(tileEntityPolluCraft);
     }
     
     /*public ContainerPolluCraft(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
@@ -86,20 +84,13 @@ public class ContainerPolluCraft extends Container {
     
     @Override
     public void onCraftMatrixChanged(IInventory par1IInventory) {
-        this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance()
-                .findMatchingRecipe(this.craftMatrix, this.tileEntityPolluCraft.getWorldObj())); //TODO: Change this, OF COURSE.
+        this.craftResult.setInventorySlotContents(0,
+                CraftingManager.instance().findMatchingRecipe(tileEntityPolluCraft, this.tileEntityPolluCraft.getWorldObj()));
     } // */
     
-    @Override
+    /*@Override
     public void onContainerClosed(EntityPlayer par1EntityPlayer) { //TODO: Make sure the items are saved after closing the GUI
         super.onContainerClosed(par1EntityPlayer);
-        
-        if(!this.tileEntityPolluCraft.getWorldObj().isRemote) {
-            for(int var2 = 0; var2 < 16; ++var2) {
-                ItemStack var3 = this.craftMatrix.getStackInSlotOnClosing(var2);
-                if(var3 != null) par1EntityPlayer.dropPlayerItemWithRandomChoice(var3, false);
-            }
-        }
     } // */
     
     @Override

@@ -18,6 +18,7 @@
 package hygienic.gui;
 
 import hygienic.Hygienic;
+import hygienic.tileentities.TileEntityPolluCraft;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,24 +27,22 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
 public class CraftingManager {
     
     private static final CraftingManager instance = new CraftingManager();
     
-    private List<IRecipe> recipes;
+    private List<PolluRecipe> recipes;
     
-    public static final CraftingManager getInstance() {
+    public static final CraftingManager instance() {
         return instance;
     }
     
     private CraftingManager() {
-        recipes = new ArrayList<IRecipe>();
+        recipes = new ArrayList<PolluRecipe>();
         this.addRecipe(new ItemStack(Hygienic.itemMop, 1),
                 new Object[] { " SS ", " SS ", " SS ", "WWWW", Character.valueOf('S'), Items.stick, Character.valueOf('W'), Items.string }); // TODO
         //this.func_92051_a(new ItemStack(Hygienic.instance.itemLye, 1), new Object[] { " RR ", "RFBR", "RWWR", "RRRR", Character.valueOf('R'), Hygienic.instance.itemRubber, Character.valueOf('F'), Item.itemRegistry.getObject("feather"), Character.valueOf('B'), Item.itemRegistry.getObject("bone"), Character.valueOf('W'), Item.itemRegistry.getObject("water_bucket") });
@@ -52,7 +51,7 @@ public class CraftingManager {
         System.out.println(this.recipes.size() + " recipes");
     }
     
-    public PolluShapedRecipes addRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
+    public PolluShapedRecipe addRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
         String var3 = "";
         int var4 = 0;
         int var5 = 0;
@@ -96,7 +95,7 @@ public class CraftingManager {
             else var15[var16] = null;
         }
         
-        PolluShapedRecipes var17 = new PolluShapedRecipes(var5, var6, var15, par1ItemStack);
+        PolluShapedRecipe var17 = new PolluShapedRecipe(var5, var6, var15, par1ItemStack);
         this.recipes.add(var17);
         return var17;
     }
@@ -120,7 +119,7 @@ public class CraftingManager {
         this.recipes.add(new PolluShapelessRecipes(par1ItemStack, var3));
     }
     
-    public ItemStack findMatchingRecipe(InventoryCrafting par1InventoryCrafting, World par2World) {
+    public ItemStack findMatchingRecipe(TileEntityPolluCraft par1InventoryCrafting, World par2World) {
         int var3 = 0;
         ItemStack var4 = null;
         ItemStack var5 = null;
@@ -145,14 +144,14 @@ public class CraftingManager {
             return new ItemStack(var4.getItem(), 1, var10);
         } else {
             for(var6 = 0; var6 < this.recipes.size(); ++var6) {
-                IRecipe var12 = (IRecipe) this.recipes.get(var6);
+                PolluRecipe var12 = this.recipes.get(var6);
                 if(var12.matches(par1InventoryCrafting, par2World)) return var12.getCraftingResult(par1InventoryCrafting);
             }
             return null;
         }
     }
     
-    public List<IRecipe> getRecipeList() {
+    public List<PolluRecipe> getRecipeList() {
         return this.recipes;
     }
 }

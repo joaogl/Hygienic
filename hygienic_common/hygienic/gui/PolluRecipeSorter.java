@@ -19,9 +19,7 @@ package hygienic.gui;
 
 import java.util.Comparator;
 
-import net.minecraft.item.crafting.IRecipe;
-
-public class PolluRecipeSorter implements Comparator<IRecipe> {
+public class PolluRecipeSorter implements Comparator<PolluRecipe> {
     
     final CraftingManager CraftingManager;
     
@@ -30,9 +28,9 @@ public class PolluRecipeSorter implements Comparator<IRecipe> {
     }
     
     @Override
-    public int compare(IRecipe par1IRecipe, IRecipe par2IRecipe) {
-        return par1IRecipe instanceof PolluShapelessRecipes && par2IRecipe instanceof PolluShapedRecipes ? 1 : (par2IRecipe instanceof PolluShapelessRecipes
-                && par1IRecipe instanceof PolluShapedRecipes ? -1 : (par2IRecipe.getRecipeSize() < par1IRecipe.getRecipeSize() ? -1 : (par2IRecipe
+    public int compare(PolluRecipe par1IRecipe, PolluRecipe par2IRecipe) {
+        return par1IRecipe instanceof PolluShapelessRecipes && par2IRecipe instanceof PolluShapedRecipe ? 1 : (par2IRecipe instanceof PolluShapelessRecipes
+                && par1IRecipe instanceof PolluShapedRecipe ? -1 : (par2IRecipe.getRecipeSize() < par1IRecipe.getRecipeSize() ? -1 : (par2IRecipe
                 .getRecipeSize() > par1IRecipe.getRecipeSize() ? 1 : 0)));
     }
 }

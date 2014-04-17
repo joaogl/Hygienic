@@ -7,14 +7,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public class TileEntityPolluCraft extends TileEntity implements IInventory /*, ISidedInventory //Maybe later?*/{
     
-    private ItemStack[] items;
+    private ItemStack[] items; //The first 16 slots are the crafting GUI; the slot 17 is the result, WHICH IS NOT STORED IN NBT.
     
-    public TileEntityPolluCraft(World world) {
-        super.setWorldObj(world);
+    public TileEntityPolluCraft() {
         items = new ItemStack[BlockPolluCraft.craftingGridSize()];
     }
     
@@ -96,7 +94,7 @@ public class TileEntityPolluCraft extends TileEntity implements IInventory /*, I
     @Override
     public void writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
-        
+        System.out.println("Writting to NBT!");
         NBTTagList items = new NBTTagList();
         
         for(int slot = 0; slot < getSizeInventory(); slot++) {
@@ -111,12 +109,13 @@ public class TileEntityPolluCraft extends TileEntity implements IInventory /*, I
         }
         
         nbtTagCompound.setTag("Items", items);
+        System.out.println("Wrote to NBT!");
     }
     
     @Override
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
-        
+        System.out.println("Reading from NBT!");
         NBTTagList items = (NBTTagList) nbtTagCompound.getTag("Items");
         
         for(int i = 0; i < items.tagCount(); i++) {
@@ -128,5 +127,6 @@ public class TileEntityPolluCraft extends TileEntity implements IInventory /*, I
                 setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
             }
         }
+        System.out.println("Read from NBT!");
     }
 }

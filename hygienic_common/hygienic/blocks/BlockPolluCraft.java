@@ -28,6 +28,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -126,12 +127,46 @@ public class BlockPolluCraft extends BlockContainer {
         } else return false;
     }
     
-    public static int craftingGridSize() {
-        return 4*4;
-    }
-
     @Override
     public TileEntity createNewTileEntity(World world, int var2) {
-        return new TileEntityPolluCraft(world);
+        return new TileEntityPolluCraft();
+    }
+    
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        
+        if(!(tileEntity instanceof TileEntityPolluCraft)) {
+            System.out.println("tileEntity not instanceof TileEntityPolluCraft, it is " + tileEntity.getClass().getSimpleName());
+            return;
+        }
+        
+        TileEntityPolluCraft tileEntityPolluCraft = (TileEntityPolluCraft) tileEntity;
+        
+        for(int i = 0; i < tileEntityPolluCraft.getSizeInventory(); i++) {
+            ItemStack itemStack = tileEntityPolluCraft.getStackInSlotOnClosing(i);
+            
+            if(itemStack == null) continue;
+            
+            float spawnX = x + world.rand.nextFloat();
+            float spawnY = y + world.rand.nextFloat();
+            float spawnZ = z + world.rand.nextFloat();
+            
+            EntityItem droppedItem = new EntityItem(world, spawnX, spawnY, spawnZ, itemStack);
+            
+            float mult = 0.05F;
+            
+            droppedItem.motionX = (-0.5F + world.rand.nextFloat()) * mult;
+            droppedItem.motionY = (4 + world.rand.nextFloat()) * mult;
+            droppedItem.motionZ = (-0.5F + world.rand.nextFloat()) * mult;
+            
+            world.spawnEntityInWorld(droppedItem);
+        }
+        
+        super.breakBlock(world, x, y, z, block, meta);
+    }
+    
+    public static int craftingGridSize() {
+        return 16;
     }
 }

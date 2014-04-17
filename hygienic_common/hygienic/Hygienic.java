@@ -25,6 +25,7 @@ import hygienic.gui.GuiHandler;
 import hygienic.items.ItemMop;
 import hygienic.lib.ModInfo;
 import hygienic.proxy.CommonProxy;
+import hygienic.tileentities.TileEntityPolluCraft;
 import net.minecraft.block.Block;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
@@ -100,6 +101,9 @@ public class Hygienic {
         //LanguageRegistry.addName(blockPolluCraft, "PolluCraft");
         GameRegistry.registerBlock(blockPolluCraft, blockPolluCraft.getUnlocalizedName().substring(5)); //The substring is to get rid of the "tile." part of the unlocalized name
         OreDictionary.registerOre("PolluCraft", blockPolluCraft);
+        
+        // TileEntities
+        GameRegistry.registerTileEntity(TileEntityPolluCraft.class, blockPolluCraft.getUnlocalizedName());
         
         // Tabs
         //LanguageRegistry.instance().addStringLocalization("itemGroup.hygienic", "en_US", "Hygienic Mod"); Lang file, usage: itemGroup.<tab unlocalized name>=<localized name>

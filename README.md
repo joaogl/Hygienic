@@ -11,7 +11,7 @@ Hygienic
 - Add dirtiness punishments: A new poison effect which is NOT affected by milk, which is applied to the player if he is too dirty; randomly drop the player's items if he is too dirty; more?
 - Feature: if the player takes a bath, remove some dirtiness;
 - Add a tag to the player's NBT Structure to save the dirtiness level
-- Add water pipes, and basically an entire system so the player can take a bath and stuff like that... (god we're screwed) (yup... I fucking know.. but... SOOOOOO COOOOOL :P)
+- Add water pipes, and basically an entire system so the player can take a bath and stuff like that... (god we're screwed) (yup... I ******* know.. but... SOOOOOO COOOOOL :P)
 
 
 

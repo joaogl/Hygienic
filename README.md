@@ -4,7 +4,7 @@ Hygienic
 
 *TO-DO LIST!* 
 
-- Add a MopBucket with WATER!.
+- Add a MopBucket with WATER levels!.
 - Try to find a better recipe to Lye.
 - Add a listener to check type of block that the player is standing on to make different levels of dirtiness effect.
 - Add a new Bar to display how dirty the player is.

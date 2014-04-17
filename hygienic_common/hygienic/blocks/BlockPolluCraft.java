@@ -121,10 +121,11 @@ public class BlockPolluCraft extends BlockContainer {
     @Override
     @SideOnly(Side.CLIENT)
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int var6, float var7, float var8, float var9) {
-        if(!player.isSneaking()) {
-            player.openGui(Hygienic.instance, 1, world, x, y, z);
-            return true;
-        } else return false;
+        if(player.isSneaking()) return false;
+        
+        player.openGui(Hygienic.instance, 1, world, x, y, z);
+        
+        return true;
     }
     
     @Override

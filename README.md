@@ -6,8 +6,8 @@ Hygienic
 --------------
 
 - Add a MopBucket with WATER levels!.
-- Add a tag to the player's NBT Structure to save the dirtiness level.
-- Add a new Bar to display how dirty the player is.
+- Implement Pollution levels
+- Implement dirtiness
 - Add a listener to check type of block that the player is standing on to make different levels of dirtiness effect and how fast he his... (sweat).
 - Add dirtiness punishments: A new poison effect which is NOT affected by milk, which is applied to the player if he is too dirty; randomly drop the player's items if he is too dirty; more?
 

@@ -21,9 +21,9 @@ import java.util.Comparator;
 
 public class PolluRecipeSorter implements Comparator<PolluRecipe> {
     
-    final CraftingManager CraftingManager;
+    final PolluCraftingManager CraftingManager;
     
-    PolluRecipeSorter(CraftingManager par1CraftingManager) {
+    PolluRecipeSorter(PolluCraftingManager par1CraftingManager) {
         this.CraftingManager = par1CraftingManager;
     }
     

@@ -57,7 +57,7 @@ public class ContainerPolluCraft extends Container {
     
     public void updateInventory() {
         this.craftResult.setInventorySlotContents(0,
-                CraftingManager.instance().findMatchingRecipe(tileEntityPolluCraft, this.tileEntityPolluCraft.getWorldObj()).getCraftingResult());
+                PolluCraftingManager.instance().findMatchingRecipe(tileEntityPolluCraft, this.tileEntityPolluCraft.getWorldObj()).getCraftingResult());
     }
 
     @Override

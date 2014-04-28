@@ -27,25 +27,20 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class CraftingManager {
+public class PolluCraftingManager {
     
-    private static final CraftingManager instance = new CraftingManager();
+    private static final PolluCraftingManager instance = new PolluCraftingManager();
     
     private List<PolluRecipe> recipes;
     
-    public static final CraftingManager instance() {
+    public static final PolluCraftingManager instance() {
         return instance;
     }
     
-    private CraftingManager() {
+    private PolluCraftingManager() {
         recipes = new ArrayList<PolluRecipe>();
         
         this.addRecipe(new ItemStack(Hygienic.itemMop, 1), null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), new ItemStack(Items.string, 1));
-        this.addRecipe(new ItemStack(Hygienic.itemMop, 1), null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), null);
-        
-        //this.func_92051_a(new ItemStack(Hygienic.instance.itemLye, 1), new Object[] { " RR ", "RFBR", "RWWR", "RRRR", Character.valueOf('R'), Hygienic.instance.itemRubber, Character.valueOf('F'), Item.itemRegistry.getObject("feather"), Character.valueOf('B'), Item.itemRegistry.getObject("bone"), Character.valueOf('W'), Item.itemRegistry.getObject("water_bucket") });
-        
-        //Collections.sort(this.recipes, new PolluRecipeSorter(this));
     }
     
     public void addRecipe(ItemStack output, ItemStack... items) {

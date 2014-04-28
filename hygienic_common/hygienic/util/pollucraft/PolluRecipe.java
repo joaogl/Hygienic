@@ -1,4 +1,4 @@
-package hygienic.gui;
+package hygienic.util.pollucraft;
 
 import hygienic.tileentity.TileEntityPolluCraft;
 import net.minecraft.item.ItemStack;

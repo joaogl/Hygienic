@@ -15,10 +15,11 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package hygienic.gui;
+package hygienic.util.pollucraft;
 
 import hygienic.blocks.BlockPolluCraft;
 import hygienic.tileentity.TileEntityPolluCraft;
+import hygienic.util.Util;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -64,7 +65,9 @@ public class PolluShapedRecipe implements PolluRecipe {
                 continue;
             }
             
-            if(ItemStack.areItemStacksEqual(recipeStack, tileEntityPolluCraft.getStackInSlot(slot))) {
+            ItemStack slotStack = tileEntityPolluCraft.getStackInSlot(slot);
+            
+            if(Util.itemsOfStacksEqual(recipeStack, slotStack, false)) {
                 continue;
             }
             

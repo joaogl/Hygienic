@@ -15,7 +15,7 @@
     along with Hygienic.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package hygienic.gui;
+package hygienic.util.pollucraft;
 
 import java.util.Comparator;
 

@@ -17,6 +17,21 @@
 
 package hygienic.util;
 
+import net.minecraft.item.ItemStack;
+
 public class Util {
     
+    public static boolean itemsOfStacksEqual(ItemStack itemStack1, ItemStack itemStack2, boolean useStackSize) {
+        if(itemStack1 == null || itemStack2 == null) {
+            return false;
+        }
+        
+        if(itemStack1.getItem() == itemStack2.getItem()) {
+            if(useStackSize) {
+                if(itemStack1.stackSize == itemStack2.stackSize)
+                    return true;
+                else return false;
+            } else return true;
+        } else return false;
+    }
 }

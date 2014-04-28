@@ -17,7 +17,7 @@
 
 package hygienic.gui;
 
-import hygienic.tileentities.TileEntityPolluCraft;
+import hygienic.tileentity.TileEntityPolluCraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

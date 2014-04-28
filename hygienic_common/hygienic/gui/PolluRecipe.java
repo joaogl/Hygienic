@@ -1,6 +1,6 @@
 package hygienic.gui;
 
-import hygienic.tileentities.TileEntityPolluCraft;
+import hygienic.tileentity.TileEntityPolluCraft;
 import net.minecraft.item.ItemStack;
 
 public interface PolluRecipe {

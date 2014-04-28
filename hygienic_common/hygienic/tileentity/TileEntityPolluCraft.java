@@ -1,4 +1,4 @@
-package hygienic.tileentities;
+package hygienic.tileentity;
 
 import hygienic.blocks.BlockPolluCraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -94,7 +94,7 @@ public class TileEntityPolluCraft extends TileEntity implements IInventory /*, I
     @Override
     public void writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
-        System.out.println("Writting to NBT!");
+        
         NBTTagList items = new NBTTagList();
         
         for(int slot = 0; slot < getSizeInventory(); slot++) {
@@ -109,13 +109,12 @@ public class TileEntityPolluCraft extends TileEntity implements IInventory /*, I
         }
         
         nbtTagCompound.setTag("Items", items);
-        System.out.println("Wrote to NBT!");
     }
     
     @Override
     public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
-        System.out.println("Reading from NBT!");
+        
         NBTTagList items = (NBTTagList) nbtTagCompound.getTag("Items");
         
         for(int i = 0; i < items.tagCount(); i++) {
@@ -127,6 +126,5 @@ public class TileEntityPolluCraft extends TileEntity implements IInventory /*, I
                 setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
             }
         }
-        System.out.println("Read from NBT!");
     }
 }

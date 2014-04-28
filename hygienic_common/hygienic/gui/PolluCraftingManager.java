@@ -18,7 +18,7 @@
 package hygienic.gui;
 
 import hygienic.Hygienic;
-import hygienic.tileentities.TileEntityPolluCraft;
+import hygienic.tileentity.TileEntityPolluCraft;
 
 import java.util.ArrayList;
 import java.util.List;

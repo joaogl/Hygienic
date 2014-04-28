@@ -25,7 +25,7 @@ import hygienic.gui.GuiHandler;
 import hygienic.items.ItemMop;
 import hygienic.lib.ModInfo;
 import hygienic.proxy.CommonProxy;
-import hygienic.tileentities.TileEntityPolluCraft;
+import hygienic.tileentity.TileEntityPolluCraft;
 import net.minecraft.block.Block;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;

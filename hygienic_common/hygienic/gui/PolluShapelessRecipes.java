@@ -17,7 +17,7 @@
 
 package hygienic.gui;
 
-import hygienic.tileentities.TileEntityPolluCraft;
+import hygienic.tileentity.TileEntityPolluCraft;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

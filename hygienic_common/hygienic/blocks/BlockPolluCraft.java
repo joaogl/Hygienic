@@ -19,7 +19,7 @@ package hygienic.blocks;
 
 import hygienic.Hygienic;
 import hygienic.lib.Textures;
-import hygienic.tileentities.TileEntityPolluCraft;
+import hygienic.tileentity.TileEntityPolluCraft;
 
 import java.util.Random;
 

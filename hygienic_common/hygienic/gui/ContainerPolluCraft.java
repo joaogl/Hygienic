@@ -25,7 +25,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
-import net.minecraft.item.ItemStack;
 
 public class ContainerPolluCraft extends Container {
     
@@ -53,86 +52,16 @@ public class ContainerPolluCraft extends Container {
             addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 171));
         }
         
-        onCraftMatrixChanged(tileEntityPolluCraft);
+        updateInventory();
     }
     
-    /*public ContainerPolluCraft(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
-        this.worldObj = par2World;
-        this.posX = par3;
-        this.posY = par4;
-        this.posZ = par5;
-        
-        //int offset2 = ((ModInfo.ScreenHeight * 6) / 480);
-        
-        this.addSlotToContainer(new SlotPolluCraft(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 135, 34));
-        int var6;
-        int var7;
-        
-        for(var6 = 0; var6 < 4; var6++)
-            for(var7 = 0; var7 < 4; var7++)
-                this.addSlotToContainer(new Slot(this.craftMatrix, var7 + var6 * 4, 8 + var7 * 18, 7 + var6 * 18));
-        
-        for(int i1 = 0; i1 < 3; i1++)
-            for(int l1 = 0; l1 < 9; l1++)
-                this.addSlotToContainer(new Slot(par1InventoryPlayer, l1 + i1 * 9 + 9, 8 + l1 * 18, 99 + i1 * 18));
-        
-        for(int j1 = 0; j1 < 9; j1++)
-            this.addSlotToContainer(new Slot(par1InventoryPlayer, j1, 8 + j1 * 18, 157));
-        
-        this.onCraftMatrixChanged(this.craftMatrix);
-    } // */
-    
-    @Override
-    public void onCraftMatrixChanged(IInventory inventory) {
+    public void updateInventory() {
         this.craftResult.setInventorySlotContents(0,
                 CraftingManager.instance().findMatchingRecipe(tileEntityPolluCraft, this.tileEntityPolluCraft.getWorldObj()).getCraftingResult());
-        
-        super.onCraftMatrixChanged(inventory);
-    } // */
-    
-    @Override
-    public ItemStack slotClick(int par1, int par2, int par3, EntityPlayer par4EntityPlayer) {
-        this.onCraftMatrixChanged(tileEntityPolluCraft); //Make sure we notify the client of updates
-        
-        return super.slotClick(par1, par2, par3, par4EntityPlayer);
     }
-    
-    /*@Override
-    public void onContainerClosed(EntityPlayer par1EntityPlayer) {
-        super.onContainerClosed(par1EntityPlayer);
-    } // */
-    
+
     @Override
     public boolean canInteractWith(EntityPlayer entityPlayer) {
         return tileEntityPolluCraft.isUseableByPlayer(entityPlayer);
-    }
-    
-    @Override
-    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-        /*ItemStack var3 = null;
-        Slot var4 = (Slot) this.inventorySlots.get(par2);
-        
-        if(var4 != null && var4.getHasStack()) {
-            ItemStack var5 = var4.getStack();
-            var3 = var5.copy();
-            
-            if(par2 == 0) {
-                if(!this.mergeItemStack(var5, 10, 46, true)) return null;
-                var4.onSlotChange(var5, var3);
-            } else if(par2 >= 10 && par2 < 37) {
-                if(!this.mergeItemStack(var5, 37, 46, false)) return null;
-            } else if(par2 >= 37 && par2 < 46) {
-                if(!this.mergeItemStack(var5, 10, 37, false)) return null;
-            } else if(!this.mergeItemStack(var5, 10, 46, false)) return null;
-            
-            if(var5.stackSize == 0)
-                var4.putStack((ItemStack) null);
-            else var4.onSlotChanged();
-            if(var5.stackSize == var3.stackSize) return null;
-            var4.onPickupFromSlot(par1EntityPlayer, var5);
-        }
-        return var3; // */
-        
-        return null;
     }
 }

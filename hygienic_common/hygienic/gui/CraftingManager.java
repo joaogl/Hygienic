@@ -39,7 +39,10 @@ public class CraftingManager {
     
     private CraftingManager() {
         recipes = new ArrayList<PolluRecipe>();
+        
         this.addRecipe(new ItemStack(Hygienic.itemMop, 1), null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), new ItemStack(Items.string, 1));
+        this.addRecipe(new ItemStack(Hygienic.itemMop, 1), null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, null, new ItemStack(Items.stick, 1), new ItemStack(Items.stick, 1), null, new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), new ItemStack(Items.string, 1), null);
+        
         //this.func_92051_a(new ItemStack(Hygienic.instance.itemLye, 1), new Object[] { " RR ", "RFBR", "RWWR", "RRRR", Character.valueOf('R'), Hygienic.instance.itemRubber, Character.valueOf('F'), Item.itemRegistry.getObject("feather"), Character.valueOf('B'), Item.itemRegistry.getObject("bone"), Character.valueOf('W'), Item.itemRegistry.getObject("water_bucket") });
         
         //Collections.sort(this.recipes, new PolluRecipeSorter(this));

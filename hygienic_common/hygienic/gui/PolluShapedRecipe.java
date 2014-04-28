@@ -38,16 +38,14 @@ public class PolluShapedRecipe implements PolluRecipe {
             recipeItems.put(i, items[i]);
         }
         
-        if(recipeItems.size() != BlockPolluCraft.craftingGridSize()) {
+        if(recipeItems.size() > BlockPolluCraft.craftingGridSize()) {
             for(int i = recipeItems.size() - 1; i < BlockPolluCraft.craftingGridSize(); i++) {
                 recipeItems.put(i, null);
             }
         }
         
         for(int i = 0; i < recipeItems.size(); i++) {
-            try {
-                recipeItems.get(i).getItem();
-            } catch(NullPointerException e) {
+            if(!recipeItems.containsKey(i)) {
                 recipeItems.put(i, null);
             }
         }

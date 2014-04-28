@@ -64,4 +64,11 @@ public class GuiPolluCraft extends GuiContainer {
         Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
         this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
     }
+    
+    @Override
+    public void handleMouseInput() {
+        super.handleMouseInput();
+        
+        ((ContainerPolluCraft) inventorySlots).updateInventory();
+    }
 }
